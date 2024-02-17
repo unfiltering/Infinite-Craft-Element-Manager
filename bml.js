@@ -20,7 +20,7 @@ function addItem() {
 
     data.elements.push({"text": itemName, "emoji": itemEmoji, "discovered": false});
     localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-    window.location.reload();
+    alert("Refresh to see changes!")
     console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 }
 
@@ -49,7 +49,7 @@ function removeItem() {
     if (indexToRemove !== -1) {
         data.elements.splice(indexToRemove, 1);
         localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-        window.location.reload();
+        alert("Refresh to see changes!")
         console.log('Removed item ' + itemNameToRemove + '.');
     } else {
         console.log('Item ' + itemNameToRemove + ' not found.');
@@ -67,7 +67,7 @@ function resetData() {
             ]
         };
         localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-        window.location.reload();
+        alert("Refresh to see changes!")
         console.log("Data reset!")
     }
 }
