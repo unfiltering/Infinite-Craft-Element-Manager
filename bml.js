@@ -5,10 +5,23 @@ function addItem() {
     if (itemName === null) {
         return; // Cancelled, do nothing
     }
-    var itemEmoji = prompt("What's the emoji for the element?");
+    var itemEmoji = prompt("What's the emoji for " + itemName + "?");
     if (itemEmoji === null) {
         return; // Cancelled, do nothing
     }
+
+    function capitalizeName(name) {
+        var exceptions = ["or", "the", "and", "of", "as"];
+        var words = name.toLowerCase().split(' ');
+        for (var i = 0; i < words.length; i++) {
+            if (i === 0 || !exceptions.includes(words[i])) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+            }
+        }
+        return words.join(' ');
+    }
+
+    itemName = capitalizeName(itemName);
 
     try {
         var storedData = localStorage.getItem('infinite-craft-data');
@@ -18,9 +31,25 @@ function addItem() {
         return;
     }
 
-    data.elements.push({"text": itemName, "emoji": itemEmoji, "discovered": false});
+    var existingItemIndex = data.elements.findIndex(function(element) {
+        return element.text.toLowerCase() === itemName.toLowerCase();
+    });
+
+    var isDiscovered = false;
+
+    if (existingItemIndex === -1) {
+        var discoveryConfirmation = confirm("Is this the first time discovering " + itemName + "? (cancel for no)");
+        if (discoveryConfirmation) {
+            isDiscovered = true;
+        }
+    } else {
+        isDiscovered = data.elements[existingItemIndex].discovered;
+    }
+
+    data.elements.push({"text": itemName, "emoji": itemEmoji, "discovered": isDiscovered});
+
     localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-    alert("Refresh to see changes!")
+    window.location.reload();
     console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 }
 
@@ -29,10 +58,7 @@ function removeItem() {
     if (itemNameToRemove === null) {
         return; // Cancelled, do nothing
     }
-    
-    // Convert input name to lowercase
     itemNameToRemove = itemNameToRemove.toLowerCase();
-
     try {
         var storedData = localStorage.getItem('infinite-craft-data');
         var data = storedData ? JSON.parse(storedData) : {"elements": []};
@@ -41,15 +67,14 @@ function removeItem() {
         return;
     }
 
-    var indexToRemove = data.elements.findIndex(function(element) {
-        // Convert stored item name to lowercase for comparison
+    var indexToRemove = data.elements.findIndex(function (element) {
         return element.text.toLowerCase() === itemNameToRemove;
     });
 
     if (indexToRemove !== -1) {
         data.elements.splice(indexToRemove, 1);
         localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-        alert("Refresh to see changes!")
+        window.location.reload();
         console.log('Removed item ' + itemNameToRemove + '.');
     } else {
         console.log('Item ' + itemNameToRemove + ' not found.');
@@ -67,7 +92,7 @@ function resetData() {
             ]
         };
         localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-        alert("Refresh to see changes!")
+        window.location.reload();
         console.log("Data reset!")
     }
 }
@@ -82,19 +107,16 @@ function addButton() {
         addButtonContainer.style.left = '10px';
         document.body.appendChild(addButtonContainer);
     }
-
     var addButton = document.createElement('button');
     addButton.textContent = 'Add Item';
     addButton.style.marginRight = '5px';
     addButton.addEventListener('click', addItem);
     addButtonContainer.appendChild(addButton);
-
     var removeButton = document.createElement('button');
     removeButton.textContent = 'Remove Item';
     removeButton.style.marginRight = '5px';
     removeButton.addEventListener('click', removeItem);
     addButtonContainer.appendChild(removeButton);
-
     var resetButton = document.createElement('button');
     resetButton.textContent = 'Reset';
     resetButton.style.marginRight = '5px';
@@ -102,6 +124,5 @@ function addButton() {
     addButtonContainer.appendChild(resetButton);
 }
 
-// Initially add the buttons
 addButton();
 console.log("[Neal.fun Item Adder]: Thanks for using!");
