@@ -7,6 +7,7 @@ Manage elements for Infinite Craft at Neal.fun! This userscript allows you to ad
 
 - **Add Element:** Add new elements to your Infinite Craft list.
 - **Remove Element:** Remove existing elements from your list.
+- **Random Element:** Get a random existing element.
 - **Reset Data:** Reset your list to the default elements.
 - **Credits:** Acknowledgment to contributors and source.
 
