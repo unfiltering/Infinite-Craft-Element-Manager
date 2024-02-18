@@ -48,6 +48,11 @@
         "discovered": false
       },
       {
+        "text": "Engine",
+        "emoji": "🚗",
+        "discovered": false
+      },
+      {
         "text": "Tea",
         "emoji": "🍵",
         "discovered": false
@@ -68,6 +73,11 @@
         "discovered": false
       },
       {
+        "text": "Cloud",
+        "emoji": "☁️",
+        "discovered": false
+      },
+      {
         "text": "Dust",
         "emoji": "🌫️",
         "discovered": false
@@ -78,8 +88,33 @@
         "discovered": false
       },
       {
+        "text": "Hurricane",
+        "emoji": "🌀",
+        "discovered": false
+      },
+      {
         "text": "Plant",
         "emoji": "🌱",
+        "discovered": false
+      },
+      {
+        "text": "Palm Tree",
+        "emoji": "🌴",
+        "discovered": false
+      },
+      {
+        "text": "Coconut",
+        "emoji": "🥥",
+        "discovered": false
+      },
+      {
+        "text": "Monkey",
+        "emoji": "🐒",
+        "discovered": false
+      },
+      {
+        "text": "Ape",
+        "emoji": "🦍",
         "discovered": false
       },
       {
