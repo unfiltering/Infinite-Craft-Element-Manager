@@ -8,16 +8,6 @@
 // @match        *://neal.fun/infinite-craft/
 // @grant        none
 // ==/UserScript==
-// ==UserScript==
-// @name         Infinite Craft Element Manager Source
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Implements adding/removing elements, and an element picker.
-// @author       You
-// @icon         https://www.google.com/s2/favicons?domain=neal.fun/infinite-craft/&sz=64
-// @match        *://neal.fun/infinite-craft/
-// @grant        none
-// ==/UserScript==
 (function() {
 var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 var defaultData = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/defaultData.json";
