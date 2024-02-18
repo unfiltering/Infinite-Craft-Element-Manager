@@ -6,25 +6,18 @@
 		"elements": []
 	};
 	fetch(defaultDataUrl).then(response => response.json()).then(data => {
-		// Assuming 'data' is an array of objects
-		defaultData = data; // Assign the fetched data to 'elements' key
+		defaultData = data;
 		console.log('Default data with fetched elements:', defaultData);
 	}).catch(error => {
 		console.error('Error fetching JSON:', error);
 	});
 
 	function setup() {
-		// Check if the key "setupPerformed" exists
 		if(!localStorage.getItem("setupPerformed")) {
-			// If it doesn't exist, create it and set its value to "0"
 			localStorage.setItem('setupPerformed', '0');
 		}
-		// Check if the value of "setupPerformed" is "0"
 		if(localStorage.getItem("setupPerformed") === "0") {
-			// Your code to perform when the condition is met
-			// Update localStorage to set the value to "1" to indicate setup is performed
 			localStorage.setItem('setupPerformed', '1');
-			// Perform additional actions
 			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
 			localStorage.setItem('custom-data', JSON.stringify({
 				"elements": []
@@ -33,9 +26,7 @@
 			console.log("Data reset!");
 		}
 	}
-	// Call the setup function
 	setup();
-
 	function loadElementsFromUrl(url, callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
@@ -52,11 +43,10 @@
 		xhr.open("GET", url, true);
 		xhr.send();
 	}
-
 	function giveAllExcept(elementsData) {
 		elementsData.forEach(function(categoryData) {
-			// Skip the "Custom" category
-			if(categoryData.category.toLowerCase() === 'custom') {
+			// Skip categories other than "Natural"
+			if(categoryData.category.toLowerCase() !== 'natural') {
 				return;
 			}
 			categoryData.elements.forEach(function(element) {
@@ -67,7 +57,6 @@
 			});
 		});
 	}
-
 	function showElementPicker(elementsData) {
 		// Remove existing element picker container if it exists
 		var existingElementPicker = document.getElementById('elementPickerContainer');
@@ -226,7 +215,6 @@
 			document.body.appendChild(elementPickerContainer);
 		}
 	}
-
 	function loadRandomElementsFromUrl(callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
@@ -244,7 +232,6 @@
 		xhr.open("GET", randomElementsUrl, true);
 		xhr.send();
 	}
-
 	function addRandomItem() {
 		var storedIndices = localStorage.getItem('selectedIndices');
 		var selectedIndices = storedIndices ? JSON.parse(storedIndices) : [];
@@ -279,7 +266,6 @@
 			localStorage.setItem('selectedIndices', JSON.stringify(selectedIndices));
 		});
 	}
-
 	function addItem() {
 		var itemName = prompt("What's the name of the element?");
 		if(itemName === null) {
@@ -330,7 +316,6 @@
 		}
 		addItemToLocalStorage(itemName, itemEmoji, isDiscovered);
 	}
-
 	function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
 		try {
 			var storedData = localStorage.getItem('infinite-craft-data');
@@ -368,7 +353,6 @@
 		window.location.reload();
 		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 	}
-
 	function removeItem() {
 		var itemNameToRemove = prompt("What's the name of the element you want to remove?");
 		if(itemNameToRemove === null) {
@@ -413,7 +397,6 @@
 			console.log('Item ' + itemNameToRemove + ' not found in custom-data.');
 		}
 	}
-
 	function resetData() {
 		if(confirm("Are you sure you want to reset to the default elements?")) {
 			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
@@ -424,11 +407,9 @@
 			console.log("Data reset!")
 		}
 	}
-
 	function showCredits() {
 		window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
 	}
-
 	function addButton() {
 		var addButtonContainer = document.querySelector('.add-item-button-container');
 		if(!addButtonContainer) {
@@ -440,7 +421,7 @@
 			document.body.appendChild(addButtonContainer);
 		}
 		// Create the HTML content
-		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 5px;"></button>`;
+		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 10px;"></button>`;
 		// Add event listener to the dynamically created button
 		var elementPickerButton = document.getElementById('elementPickerButton');
 		if(elementPickerButton) {
@@ -465,7 +446,6 @@
 			creditsButton.addEventListener('click', showCredits);
 		}
 	}
-
 	function toggleMenu() {
 		loadElementsFromUrl(elementsUrl, function(error, elementsData) {
 			if(error) {
