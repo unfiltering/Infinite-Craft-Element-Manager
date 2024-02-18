@@ -1,3 +1,4 @@
+
 (function() {
 	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
@@ -49,18 +50,35 @@
 		xhr.send();
 	}
 
-	function giveAllExcept(elementsData) {
-		elementsData.forEach(function(categoryData) {
-			if(categoryData.category.toLowerCase() !== 'natural') {
-				return;
-			}
-			categoryData.elements.forEach(function(element) {
-				if(element.text.toLowerCase() !== 'fire' && element.text.toLowerCase() !== 'wind' && element.text.toLowerCase() !== 'earth' && element.text.toLowerCase() !== 'water') {
-					addItemToLocalStorage(element.text, element.emoji, element.discovered);
-				}
-			});
-		});
-	}
+function giveAllExcept(elementsData) {
+    var naturalElementsProcessed = 0; // Track the number of natural elements processed
+
+    elementsData.forEach(function(categoryData) {
+        if (categoryData.category.toLowerCase() !== 'natural') {
+            return; // Skip non-natural categories
+        }
+
+        categoryData.elements.forEach(function(element) {
+            if (element.text.toLowerCase() !== 'fire' &&
+                element.text.toLowerCase() !== 'wind' &&
+                element.text.toLowerCase() !== 'earth' &&
+                element.text.toLowerCase() !== 'water') {
+                addItemToLocalStorage(element.text, element.emoji, element.discovered);
+            }
+
+            naturalElementsProcessed++; // Increment the count of processed natural elements
+
+            // Check if all natural elements have been processed
+            if (naturalElementsProcessed === categoryData.elements.length) {
+                // Alert when all natural elements are processed
+                alert("All natural elements processed!");
+                // Optionally, you can stop further processing here
+                return;
+            }
+        });
+    });
+}
+
 
 	function showElementPicker(elementsData) {
 		var existingElementPicker = document.getElementById('elementPickerContainer');
