@@ -204,7 +204,7 @@
       },
       {
         "text": "Obama",
-        "emoji": "👨🏾",
+        "emoji": "🐻",
         "discovered": false
       },
       {
@@ -216,25 +216,20 @@
         "text": "Trump",
         "emoji": "💩",
         "discovered": false
-      }
-    ]
-  },
-  {
-    "category": "Quick Access",
-    "elements": [
+      },
       {
         "text": "Young Sheldon",
         "emoji": "🤓",
         "discovered": false
       },
+    ]
+  },
+  {
+    "category": "Custom",
+    "elements": [
       {
         "text": "is the answer to life, the universe and everything.",
         "emoji": "4️⃣2️⃣",
-        "discovered": false
-      },
-      {
-        "text": "Joint",
-        "emoji": "🚬",
         "discovered": false
       },
       {
