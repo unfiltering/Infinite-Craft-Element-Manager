@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Infinite Craft Element Manager
 // @namespace    http://tampermonkey.net/
-// @version      v1.5
+// @version      v2
 // @description  Adds a way to create elements, remove elements, and an element picker.
 // @author       unfiltering
 // @match        *://neal.fun/infinite-craft/
