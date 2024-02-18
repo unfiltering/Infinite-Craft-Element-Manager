@@ -168,4 +168,14 @@ function addButton() {
 
 addButton();
 console.log("[Neal.fun Element Manager]: Loaded!");
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the image element with the class "logo"
+    var logoImg = document.querySelector('.logo');
+    
+    // Check if the image element exists
+    if (logoImg) {
+      // Update the src attribute to point to the desired image file
+      logoImg.src = 'https://unfiltering.github.io/infinite-craft/logo.png';
+    }
+});
 })();
