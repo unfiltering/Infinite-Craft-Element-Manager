@@ -63,5 +63,15 @@
     "text": "Human",
     "emoji": "👨",
     "discovered": false
+  },
+  {
+    "text": "Alien",
+    "emoji": "👽",
+    "discovered": false
+  },
+  {
+    "text": "Hybrid",
+    "emoji": "🌱",
+    "discovered": false
   }
 ]
