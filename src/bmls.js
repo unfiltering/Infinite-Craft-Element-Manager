@@ -1,4 +1,3 @@
-
 (function() {
 	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
@@ -21,11 +20,6 @@
 				"elements": []
 			}));
 			window.location.reload();
-      alert("This site was directly ripped from Neal, I do not own this site!\nWelcome to Infinite Craft Sandbox");
-      alert("Considering this is the first time you're using Infinite Craft Sandbox, we'll walk you through the basics.");
-      alert("Since this site is ripped from Neal, you cannot merge, since infinite craft uses an API, which I dont have.");
-      alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
-      alert("This message won't appear again! Happy trolling!");
 		}
 	}
 	setup();
@@ -47,35 +41,18 @@
 		xhr.send();
 	}
 
-function giveAllExcept(elementsData) {
-    var naturalElementsProcessed = 0; // Track the number of natural elements processed
-
-    elementsData.forEach(function(categoryData) {
-        if (categoryData.category.toLowerCase() !== 'natural') {
-            return; // Skip non-natural categories
-        }
-
-        categoryData.elements.forEach(function(element) {
-            if (element.text.toLowerCase() !== 'fire' &&
-                element.text.toLowerCase() !== 'wind' &&
-                element.text.toLowerCase() !== 'earth' &&
-                element.text.toLowerCase() !== 'water') {
-                addItemToLocalStorage(element.text, element.emoji, element.discovered);
-            }
-
-            naturalElementsProcessed++; // Increment the count of processed natural elements
-
-            // Check if all natural elements have been processed
-            if (naturalElementsProcessed === categoryData.elements.length) {
-                // Alert when all natural elements are processed
-                alert("All natural elements processed!");
-                // Optionally, you can stop further processing here
-                return;
-            }
-        });
-    });
-}
-
+	function giveAllExcept(elementsData) {
+		elementsData.forEach(function(categoryData) {
+			if(categoryData.category.toLowerCase() !== 'natural') {
+				return;
+			}
+			categoryData.elements.forEach(function(element) {
+				if(element.text.toLowerCase() !== 'fire' && element.text.toLowerCase() !== 'wind' && element.text.toLowerCase() !== 'earth' && element.text.toLowerCase() !== 'water') {
+					addItemToLocalStorage(element.text, element.emoji, element.discovered);
+				}
+			});
+		});
+	}
 
 	function showElementPicker(elementsData) {
 		var existingElementPicker = document.getElementById('elementPickerContainer');
@@ -121,7 +98,7 @@ function giveAllExcept(elementsData) {
 			optionsCategory.style.textAlign = 'center';
 			elementPickerContainer.appendChild(optionsCategory);
 			var optionsCategoryTitle = document.createElement('h3');
-			optionsCategoryTitle.textContent = '⭐ Infinite Craft Sandbox Menu v2 ⭐';
+			optionsCategoryTitle.textContent = '⭐ Element Manager v2 ⭐';
 			optionsCategoryTitle.style.marginTop = '0';
 			optionsCategoryTitle.style.marginBottom = '10px';
 			optionsCategory.appendChild(optionsCategoryTitle);
@@ -466,5 +443,5 @@ function giveAllExcept(elementsData) {
 	loadElementsFromUrl(elementsUrl, function(error, elementsData) {
 		console.log("Elements Data:", elementsData);
 	});
-	console.log('Infinite Craft Element Manager Sandbox loaded successfully.');
+	console.log('[Infinite Craft Element Manager] Loaded.');
 })();
