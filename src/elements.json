@@ -18,5 +18,50 @@
     "text": "Earth",
     "emoji": "🌍",
     "discovered": false
+  },
+  {
+    "text": "Steam",
+    "emoji": "💨",
+    "discovered": false
+  },
+  {
+    "text": "Dust",
+    "emoji": "🌫️",
+    "discovered": false
+  },
+  {
+    "text": "Plant",
+    "emoji": "🌱",
+    "discovered": false
+  },
+  {
+    "text": "Smoke",
+    "emoji": "💨",
+    "discovered": false
+  },
+  {
+    "text": "Planet",
+    "emoji": "🪐",
+    "discovered": false
+  },
+  {
+    "text": "Incense",
+    "emoji": "🕯️",
+    "discovered": false
+  },
+  {
+    "text": "Venus",
+    "emoji": "♀️",
+    "discovered": false
+  },
+  {
+    "text": "Life",
+    "emoji": "🌱",
+    "discovered": false
+  },
+  {
+    "text": "Human",
+    "emoji": "👨",
+    "discovered": false
   }
 ]
