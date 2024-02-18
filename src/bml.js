@@ -101,7 +101,7 @@
 			optionsCategory.style.textAlign = 'center';
 			elementPickerContainer.appendChild(optionsCategory);
 			var optionsCategoryTitle = document.createElement('h3');
-			optionsCategoryTitle.textContent = '⭐ Element Manager ⭐';
+			optionsCategoryTitle.textContent = '⭐ Element Manager v2 ⭐';
 			optionsCategoryTitle.style.marginTop = '0';
 			optionsCategoryTitle.style.marginBottom = '10px';
 			optionsCategory.appendChild(optionsCategoryTitle);
