@@ -1,5 +1,17 @@
-{
-  "text": "Water",
-  "emoji": "💧",
-  "discovered": false
-}
+[
+  {
+    "text": "Water",
+    "emoji": "💧",
+    "discovered": false
+  },
+  {
+    "text": "Fire",
+    "emoji": "🔥",
+    "discovered": true
+  },
+  {
+    "text": "Earth",
+    "emoji": "🌍",
+    "discovered": false
+  }
+]
