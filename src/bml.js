@@ -102,7 +102,7 @@
 			optionsCategory.style.textAlign = 'center';
 			elementPickerContainer.appendChild(optionsCategory);
 			var optionsCategoryTitle = document.createElement('h3');
-			optionsCategoryTitle.textContent = 'Options';
+			optionsCategoryTitle.textContent = '⭐ Element Manager ⭐';
 			optionsCategoryTitle.style.marginTop = '0';
 			optionsCategoryTitle.style.marginBottom = '10px';
 			optionsCategory.appendChild(optionsCategoryTitle);
@@ -409,7 +409,7 @@
 			addButtonContainer.style.left = '10px';
 			document.body.appendChild(addButtonContainer);
 		}
-		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 10px;"></button>`;
+		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-top: 10px; margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 10px;"></button>`;
 		var elementPickerButton = document.getElementById('elementPickerButton');
 		if(elementPickerButton) {
 			elementPickerButton.addEventListener('click', function() {
