@@ -4,6 +4,6 @@
   { "text": "Fried Chicken", "emoji": "🍗", "discovered": false },
   { "text": "Item", "emoji": "❓", "discovered": false },
   { "text": "Spotify", "emoji": "💻", "discovered": false },
-  { "text": "42 (42 is the answer to life, the universe and everything.)", "emoji": "4️⃣2️⃣", "discovered": true }
+  { "text": "(42 is the answer to life, the universe and everything.)", "emoji": "4️⃣2️⃣", "discovered": true },
   { "text": "gloabe.github.io", "emoji": "⭐💻", "discovered": true }
 ]
