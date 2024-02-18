@@ -125,13 +125,68 @@
     ]
   },
   {
-    "category": "Custom",
+    "category": "Quick Access",
     "elements": [
-      {
-        "text": "Item",
-        "emoji": "❓",
-        "discovered": true
-      }
+  {
+    "text": "Young Sheldon",
+    "emoji": "🤓",
+    "discovered": false
+  },
+  {
+    "text": "is the answer to life, the universe and everything.",
+    "emoji": "4️⃣2️⃣",
+    "discovered": false
+  },
+  {
+    "text": "Joint",
+    "emoji": "🚬",
+    "discovered": false
+  },
+  {
+    "text": "Fried Chicken",
+    "emoji": "🍗",
+    "discovered": false
+  },
+  {
+    "text": "Item",
+    "emoji": "❓",
+    "discovered": false
+  },
+  {
+    "text": "Superbad",
+    "emoji": "🦠",
+    "discovered": false
+  },
+  {
+    "text": "Super",
+    "emoji": "⭐",
+    "discovered": false
+  },
+  {
+    "text": "Stoned Ape",
+    "emoji": "🌫️🦍",
+    "discovered": true
+  },
+  {
+    "text": "Stoned Monkey",
+    "emoji": "🌫️🐒",
+    "discovered": true
+  },
+  {
+    "text": "Banana",
+    "emoji": "🍌",
+    "discovered": false
+  },
+  {
+    "text": "Osama Bin Laden",
+    "emoji": "🧕🏻",
+    "discovered": false
+  },
+  {
+    "text": "Obama",
+    "emoji": "👨🏾",
+    "discovered": false
+  },
     ]
   }
 ]
