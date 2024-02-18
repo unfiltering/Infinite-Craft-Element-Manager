@@ -415,7 +415,6 @@
 						return;
 					}
 					showElementPicker(elementsData);
-					console.log("Elements Data:", elementsData);
 				});
 			});
 		}
