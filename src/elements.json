@@ -23,6 +23,16 @@
         "discovered": false
       },
       {
+        "text": "Wave",
+        "emoji": "🌊",
+        "discovered": false
+      },
+      {
+        "text": "Tsunami",
+        "emoji": "🌊",
+        "discovered": false
+      },
+      {
         "text": "Mountain",
         "emoji": "🏔️",
         "discovered": false
@@ -63,6 +73,11 @@
         "discovered": false
       },
       {
+        "text": "Tornado",
+        "emoji": "🌪️",
+        "discovered": false
+      },
+      {
         "text": "Plant",
         "emoji": "🌱",
         "discovered": false
@@ -98,6 +113,26 @@
         "discovered": false
       },
       {
+        "text": "Sandstorm",
+        "emoji": "🌪️",
+        "discovered": false
+      },
+      {
+        "text": "Genie",
+        "emoji": "🧞‍♂️",
+        "discovered": false
+      },
+      {
+        "text": "Terrorist",
+        "emoji": "💣",
+        "discovered": false
+      },
+      {
+        "text": "Osama Bin Laden",
+        "emoji": "💣",
+        "discovered": false
+      },
+      {
         "text": "Venus",
         "emoji": "♀️",
         "discovered": false
@@ -123,6 +158,30 @@
         "discovered": false
       }
     ]
+  },
+  {
+    "category": "People",
+    "elements": [
+      {
+        "text": "Osama Bin Laden",
+        "emoji": "💣",
+        "discovered": false
+      },
+      {
+        "text": "Obama",
+        "emoji": "👨🏾",
+        "discovered": false
+      },
+      {
+        "text": "Obama Bin Laden",
+        "emoji": "💩",
+        "discovered": false
+      },
+      {
+        "text": "Trump",
+        "emoji": "💩",
+        "discovered": false
+      }
   },
   {
     "category": "Quick Access",
@@ -175,16 +234,6 @@
       {
         "text": "Banana",
         "emoji": "🍌",
-        "discovered": false
-      },
-      {
-        "text": "Osama Bin Laden",
-        "emoji": "🧕🏻",
-        "discovered": false
-      },
-      {
-        "text": "Obama",
-        "emoji": "👨🏾",
         "discovered": false
       }
     ]
