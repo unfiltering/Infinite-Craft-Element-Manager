@@ -1,5 +1,5 @@
 (function() {
-    var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/sandboxElements.json";
+    var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 
     function loadRandomElementsFromUrl(callback) {
         var xhr = new XMLHttpRequest();
@@ -226,5 +226,5 @@
         addButtonContainer.appendChild(creditsButton);
     }
     addButton();
-    console.log("[Neal.fun Element Manager Sandbox Mode]: Loaded!");
+    console.log("[Neal.fun Element Manager]: Loaded!");
 })();
