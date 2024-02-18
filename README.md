@@ -1,8 +1,7 @@
 # Infinite Craft Element Manager
-
 ![Banner](/ElementManagerIC.png)
 
-Manage elements for the Infinite Craft game on Neal.fun! This userscript allows you to add, remove, and reset elements in the game.
+Manage elements for Infinite Craft at Neal.fun! This userscript allows you to add, remove, and reset elements in the game. Some things can actually be merged together considering AI is doing it!
 
 ## Features
 
@@ -15,7 +14,7 @@ Manage elements for the Infinite Craft game on Neal.fun! This userscript allows 
 
 1. Install a userscript manager such as Tampermonkey for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for Firefox.
 2. Install the Infinite Craft Element Manager script by clicking [here](link_to_your_script).
-3. Access the Infinite Craft game on [Neal.fun](https://neal.fun/infinite-craft/).
+3. Open Infinite Craft at [Neal.fun](https://neal.fun/infinite-craft/).
 4. You should see the "Add Item," "Remove Item," and "Reset" buttons at the bottom left of the page.
 
 ## Usage
@@ -25,9 +24,4 @@ Manage elements for the Infinite Craft game on Neal.fun! This userscript allows 
 - **Resetting Data:** Click on the "Reset" button to revert to the default list of elements.
 
 ## Credits
-
-This userscript was developed by [Your Name](link_to_your_profile). For contributions and issues, please visit the [GitHub repository](https://github.com/unfiltering/Infinite-Craft-Element-Manager/).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+This userscript was developed by unfiltering and GPT 3.5. This was also painstakingly written by GPT3.5.
