@@ -19,6 +19,8 @@
 			localStorage.setItem('custom-data', JSON.stringify({
 				"elements": []
 			}));
+			alert("Thanks for using Elements Manager v2!")
+			alert("Press Q to quickly open the menu!")
 			window.location.reload();
 		}
 	}
