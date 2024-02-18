@@ -128,9 +128,9 @@
     "category": "Custom",
     "elements": [
       {
-        "text": "E",
-        "emoji": "🌬️",
-        "discovered": false
+        "text": "Item",
+        "emoji": "❓",
+        "discovered": true
       }
     ]
   }
