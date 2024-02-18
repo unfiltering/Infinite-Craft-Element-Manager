@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Neal.Fun Item Adder
+// @name         Neal.Fun Element Manager
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Adds buttons to add and remove items from the list
@@ -8,8 +8,89 @@
 // @match        *://neal.fun/infinite-craft/
 // @grant        none
 // ==/UserScript==
-
 (function() {
+    var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
+
+    function loadRandomElementsFromUrl(callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var randomElementsData = JSON.parse(xhr.responseText);
+                    console.log("Loaded all data! Ignore:\n" + randomElementsData)
+                    callback(null, randomElementsData);
+                } else {
+                    callback("Failed to load random elements: " + xhr.status);
+                }
+            }
+        };
+        xhr.open("GET", randomElementsUrl, true);
+        xhr.send();
+    }
+
+    function addRandomItem() {
+        var storedIndices = localStorage.getItem('selectedIndices');
+        var selectedIndices = storedIndices ? JSON.parse(storedIndices) : [];
+
+        loadRandomElementsFromUrl(function(error, randomElementsData) {
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            // Reset selection if all items have been chosen
+            if (selectedIndices.length >= randomElementsData.length) {
+                console.log("Resetting selection.");
+                localStorage.removeItem('selectedIndices');
+                selectedIndices = [];
+            }
+
+            // Filter out the indices that have already been selected
+            var filteredIndices = randomElementsData.reduce(function(acc, _, index) {
+                if (!selectedIndices.includes(index)) {
+                    acc.push(index);
+                }
+                return acc;
+            }, []);
+
+            if (filteredIndices.length === 0) {
+                console.log("All items have been selected.");
+                return;
+            }
+
+            var randomIndex = Math.floor(Math.random() * filteredIndices.length);
+            var selectedIndex = filteredIndices[randomIndex];
+            var randomElement = randomElementsData[selectedIndex];
+            addItemToLocalStorage(randomElement.text, randomElement.emoji, randomElement.discovered);
+
+            // Store the index of the selected item
+            selectedIndices.push(selectedIndex);
+            localStorage.setItem('selectedIndices', JSON.stringify(selectedIndices));
+        });
+    }
+
+    function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
+        try {
+            var storedData = localStorage.getItem('infinite-craft-data');
+            var data = storedData ? JSON.parse(storedData) : {
+                "elements": []
+            };
+        } catch (error) {
+            console.error("Error parsing JSON data from localStorage:", error);
+            return;
+        }
+
+        data.elements.push({
+            "text": itemName,
+            "emoji": itemEmoji,
+            "discovered": isDiscovered
+        });
+
+        localStorage.setItem('infinite-craft-data', JSON.stringify(data));
+        window.location.reload();
+        console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
+    }
+
     function addItem() {
         var itemName = prompt("What's the name of the element?");
         if (itemName === null) {
@@ -30,9 +111,7 @@
             }
             return words.join(' ');
         }
-
         itemName = capitalizeName(itemName);
-
         try {
             var storedData = localStorage.getItem('infinite-craft-data');
             var data = storedData ? JSON.parse(storedData) : {
@@ -42,13 +121,10 @@
             console.error("Error parsing JSON data from localStorage:", error);
             return;
         }
-
         var existingItemIndex = data.elements.findIndex(function(element) {
             return element.text.toLowerCase() === itemName.toLowerCase();
         });
-
         var isDiscovered = false;
-
         if (existingItemIndex === -1) {
             var discoveryConfirmation = confirm("Is '" + itemEmoji + " " + itemName + "' a first discovery? (cancel for no)");
             if (discoveryConfirmation) {
@@ -57,16 +133,7 @@
         } else {
             isDiscovered = data.elements[existingItemIndex].discovered;
         }
-
-        data.elements.push({
-            "text": itemName,
-            "emoji": itemEmoji,
-            "discovered": isDiscovered
-        });
-
-        localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-        window.location.reload();
-        console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
+        addItemToLocalStorage(itemName, itemEmoji, isDiscovered);
     }
 
     function removeItem() {
@@ -84,11 +151,9 @@
             console.error("Error parsing JSON data from localStorage:", error);
             return;
         }
-
         var indexToRemove = data.elements.findIndex(function(element) {
             return element.text.toLowerCase() === itemNameToRemove;
         });
-
         if (indexToRemove !== -1) {
             data.elements.splice(indexToRemove, 1);
             localStorage.setItem('infinite-craft-data', JSON.stringify(data));
@@ -145,27 +210,31 @@
             document.body.appendChild(addButtonContainer);
         }
         var addButton = document.createElement('button');
-        addButton.textContent = 'Add Item';
+        addButton.textContent = 'Add Element';
         addButton.style.marginRight = '5px';
         addButton.addEventListener('click', addItem);
         addButtonContainer.appendChild(addButton);
         var removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove Item';
+        removeButton.textContent = 'Remove Element';
         removeButton.style.marginRight = '5px';
         removeButton.addEventListener('click', removeItem);
         addButtonContainer.appendChild(removeButton);
         var resetButton = document.createElement('button');
-        resetButton.textContent = 'Reset';
+        resetButton.textContent = 'Reset Elements';
         resetButton.style.marginRight = '5px';
         resetButton.addEventListener('click', resetData);
         addButtonContainer.appendChild(resetButton);
+        var addRandomButton = document.createElement('button');
+        addRandomButton.textContent = 'Random Element';
+        addRandomButton.style.marginRight = '5px';
+        addRandomButton.addEventListener('click', addRandomItem);
+        addButtonContainer.appendChild(addRandomButton);
         var creditsButton = document.createElement('button');
         creditsButton.textContent = 'Credits';
         creditsButton.style.marginRight = '5px';
         creditsButton.addEventListener('click', showCredits);
         addButtonContainer.appendChild(creditsButton);
     }
-
     addButton();
     console.log("[Neal.fun Element Manager]: Loaded!");
 })();
