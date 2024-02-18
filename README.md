@@ -13,7 +13,7 @@ Manage elements for Infinite Craft at Neal.fun! This userscript allows you to ad
 ## Installation
 
 1. Install a userscript manager such as Tampermonkey for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for Firefox.
-2. Install the Infinite Craft Element Manager script by clicking [here](script.js).
+2. Install the Infinite Craft Element Manager script by clicking [here](https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/script.js).
 3. Open Infinite Craft at [Neal.fun](https://neal.fun/infinite-craft/).
 4. You should see the "Add Item," "Remove Item," and "Reset" buttons at the bottom left of the page.
 
