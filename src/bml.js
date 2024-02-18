@@ -1,5 +1,15 @@
-'use strict';
+// ==UserScript==
+// @name         Neal.Fun Item Adder
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Adds buttons to add and remove items from the list
+// @author       You
+// @icon         https://www.google.com/s2/favicons?domain=neal.fun/infinite-craft/&sz=64
+// @match        *://neal.fun/infinite-craft/
+// @grant        none
+// ==/UserScript==
 
+(function() {
 function addItem() {
     var itemName = prompt("What's the name of the element?");
     if (itemName === null) {
@@ -25,7 +35,9 @@ function addItem() {
 
     try {
         var storedData = localStorage.getItem('infinite-craft-data');
-        var data = storedData ? JSON.parse(storedData) : {"elements": []};
+        var data = storedData ? JSON.parse(storedData) : {
+            "elements": []
+        };
     } catch (error) {
         console.error("Error parsing JSON data from localStorage:", error);
         return;
@@ -38,7 +50,7 @@ function addItem() {
     var isDiscovered = false;
 
     if (existingItemIndex === -1) {
-        var discoveryConfirmation = confirm("Is '"+ itemEmoji + " " +  itemName +"' a first discovery? (cancel for no)");
+        var discoveryConfirmation = confirm("Is '" + itemEmoji + " " + itemName + "' a first discovery? (cancel for no)");
         if (discoveryConfirmation) {
             isDiscovered = true;
         }
@@ -46,7 +58,11 @@ function addItem() {
         isDiscovered = data.elements[existingItemIndex].discovered;
     }
 
-    data.elements.push({"text": itemName, "emoji": itemEmoji, "discovered": isDiscovered});
+    data.elements.push({
+        "text": itemName,
+        "emoji": itemEmoji,
+        "discovered": isDiscovered
+    });
 
     localStorage.setItem('infinite-craft-data', JSON.stringify(data));
     window.location.reload();
@@ -61,13 +77,15 @@ function removeItem() {
     itemNameToRemove = itemNameToRemove.toLowerCase();
     try {
         var storedData = localStorage.getItem('infinite-craft-data');
-        var data = storedData ? JSON.parse(storedData) : {"elements": []};
+        var data = storedData ? JSON.parse(storedData) : {
+            "elements": []
+        };
     } catch (error) {
         console.error("Error parsing JSON data from localStorage:", error);
         return;
     }
 
-    var indexToRemove = data.elements.findIndex(function (element) {
+    var indexToRemove = data.elements.findIndex(function(element) {
         return element.text.toLowerCase() === itemNameToRemove;
     });
 
@@ -84,17 +102,36 @@ function removeItem() {
 function resetData() {
     if (confirm("Are you sure you want to reset to the default elements?")) {
         var defaultData = {
-            "elements": [
-                {"text": "Water", "emoji": "💧", "discovered": false},
-                {"text": "Fire", "emoji": "🔥", "discovered": false},
-                {"text": "Wind", "emoji": "🌬️", "discovered": false},
-                {"text": "Earth", "emoji": "🌍", "discovered": false}
+            "elements": [{
+                    "text": "Water",
+                    "emoji": "💧",
+                    "discovered": false
+                },
+                {
+                    "text": "Fire",
+                    "emoji": "🔥",
+                    "discovered": false
+                },
+                {
+                    "text": "Wind",
+                    "emoji": "🌬️",
+                    "discovered": false
+                },
+                {
+                    "text": "Earth",
+                    "emoji": "🌍",
+                    "discovered": false
+                }
             ]
         };
         localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
         window.location.reload();
         console.log("Data reset!")
     }
+}
+
+function showCredits() {
+    window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
 }
 
 function addButton() {
@@ -122,7 +159,13 @@ function addButton() {
     resetButton.style.marginRight = '5px';
     resetButton.addEventListener('click', resetData);
     addButtonContainer.appendChild(resetButton);
+    var creditsButton = document.createElement('button');
+    creditsButton.textContent = 'Credits';
+    creditsButton.style.marginRight = '5px';
+    creditsButton.addEventListener('click', showCredits);
+    addButtonContainer.appendChild(creditsButton);
 }
 
 addButton();
 console.log("[Neal.fun Element Manager]: Loaded!");
+})();
