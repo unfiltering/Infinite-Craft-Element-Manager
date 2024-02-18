@@ -1,5 +1,5 @@
 (function() {
-	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/sandboxElements.json";
+	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
 	var defaultDataUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/defaultData.json";
 	fetch(defaultDataUrl).then(response => response.json()).then(data => {
@@ -19,16 +19,15 @@
 			localStorage.setItem('custom-data', JSON.stringify({
 				"elements": []
 			}));
-			window.location.reload();
 			alert("This site was directly ripped from Neal, I do not own this site!\nWelcome to Infinite Craft Sandbox");
      	 		alert("Considering this is the first time you're using Infinite Craft Sandbox, we'll walk you through the basics.");
      			alert("Since this site is ripped from Neal, you cannot merge, since infinite craft uses an API, which I dont have.");
       			alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
       			alert("This message won't appear again! Happy trolling!");
+			window.location.reload();
 		}
 	}
 	setup();
-
 	function loadElementsFromUrl(url, callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
@@ -448,5 +447,5 @@
 	loadElementsFromUrl(elementsUrl, function(error, elementsData) {
 		console.log("Elements Data:", elementsData);
 	});
-	console.log('[Infinite Craft Element Manager] Sandbox loaded.');
+	console.log('Infinite Craft Element Manager script loaded successfully.');
 })();
