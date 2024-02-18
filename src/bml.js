@@ -7,7 +7,7 @@
 	};
 	fetch(defaultDataUrl).then(response => response.json()).then(data => {
 		defaultData = data;
-		console.log('Default data with fetched elements:', defaultData);
+		console.log('Default Data:', defaultData);
 	}).catch(error => {
 		console.error('Error fetching JSON:', error);
 	});
@@ -23,7 +23,6 @@
 				"elements": []
 			}));
 			window.location.reload();
-			console.log("Data reset!");
 		}
 	}
 	setup();
@@ -111,7 +110,7 @@
 			optionsList.style.padding = '0';
 			optionsCategory.appendChild(optionsList);
 			var giveAllButton = document.createElement('li');
-			giveAllButton.textContent = 'Give All';
+			giveAllButton.textContent = 'Give All Natural Elements';
 			giveAllButton.style.cursor = 'pointer';
 			giveAllButton.style.padding = '10px';
 			giveAllButton.style.borderBottom = '1px solid #ccc';
@@ -123,7 +122,7 @@
 			});
 			optionsList.appendChild(giveAllButton);
 			var addElementButton = document.createElement('li');
-			addElementButton.textContent = 'Add Element';
+			addElementButton.textContent = 'Create Element';
 			addElementButton.style.cursor = 'pointer';
 			addElementButton.style.padding = '10px';
 			addElementButton.style.borderBottom = '1px solid #ccc';
@@ -132,7 +131,7 @@
 			addElementButton.addEventListener('click', addItem);
 			optionsList.appendChild(addElementButton);
 			var removeElementButton = document.createElement('li');
-			removeElementButton.textContent = 'Remove Element';
+			removeElementButton.textContent = 'Delete Element';
 			removeElementButton.style.cursor = 'pointer';
 			removeElementButton.style.padding = '10px';
 			removeElementButton.style.borderBottom = '1px solid #ccc';
@@ -141,7 +140,7 @@
 			removeElementButton.addEventListener('click', removeItem);
 			optionsList.appendChild(removeElementButton);
 			var addRandomElementButton = document.createElement('li');
-			addRandomElementButton.textContent = 'Random Element';
+			addRandomElementButton.textContent = 'Give Random Element';
 			addRandomElementButton.style.cursor = 'pointer';
 			addRandomElementButton.style.padding = '10px';
 			addRandomElementButton.style.borderBottom = '1px solid #ccc';
@@ -205,7 +204,6 @@
 			if(xhr.readyState === XMLHttpRequest.DONE) {
 				if(xhr.status === 200) {
 					var randomElementsData = JSON.parse(xhr.responseText);
-					console.log("Loaded all data! Ignore:\n" + randomElementsData);
 					callback(null, randomElementsData);
 				}
 				else {
@@ -226,7 +224,6 @@
 				return;
 			}
 			if(selectedIndices.length >= randomElementsData.length) {
-				console.log("Resetting selection.");
 				localStorage.removeItem('selectedIndices');
 				selectedIndices = [];
 			}
@@ -237,7 +234,6 @@
 				return acc;
 			}, []);
 			if(filteredIndices.length === 0) {
-				console.log("All items have been selected.");
 				return;
 			}
 			var randomIndex = Math.floor(Math.random() * filteredIndices.length);
@@ -333,10 +329,10 @@
 			"emoji": itemEmoji,
 			"discovered": isDiscovered
 		});
+		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 		localStorage.setItem('infinite-craft-data', JSON.stringify(data));
 		localStorage.setItem('custom-data', JSON.stringify(customData));
 		window.location.reload();
-		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 	}
 
 	function removeItem() {
@@ -365,11 +361,11 @@
 		if(indexToRemove !== -1) {
 			data.elements.splice(indexToRemove, 1);
 			localStorage.setItem('infinite-craft-data', JSON.stringify(data));
+			console.log('Removed element ' + itemNameToRemove + '.');
 			window.location.reload();
-			console.log('Removed item ' + itemNameToRemove + ' from infinite-craft-data.');
 		}
 		else {
-			console.log('Item ' + itemNameToRemove + ' not found in infinite-craft-data.');
+			alert('Element ' + itemNameToRemove + ' not found!');
 		}
 		var customIndexToRemove = customData.elements.findIndex(function(element) {
 			return element.text.toLowerCase() === itemNameToRemove;
@@ -380,7 +376,7 @@
 			console.log('Removed item ' + itemNameToRemove + ' from custom-data.');
 		}
 		else {
-			console.log('Item ' + itemNameToRemove + ' not found in custom-data.');
+			console.log('Element ' + itemNameToRemove + ' not found in custom-data.');
 		}
 	}
 
