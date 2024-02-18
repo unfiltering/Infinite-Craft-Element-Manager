@@ -9,6 +9,11 @@
 		console.error('Error fetching JSON:', error);
 	});
 
+	function insertTitle() {
+   	 	var title = "Infinite Craft Sandbox";
+   	 	document.title = title;
+	}
+	
 	function setup() {
 		if(!localStorage.getItem("setupPerformed")) {
 			localStorage.setItem('setupPerformed', '0');
@@ -447,5 +452,5 @@
 	loadElementsFromUrl(elementsUrl, function(error, elementsData) {
 		console.log("Elements Data:", elementsData);
 	});
-	console.log('Infinite Craft Element Manager script loaded successfully.');
+	insertTitle();console.log('Infinite Craft Element Manager script loaded successfully.');
 })();
