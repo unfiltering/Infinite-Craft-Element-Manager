@@ -2,7 +2,9 @@
 	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
 	var defaultDataUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/defaultData.json";
-	var defaultData = {"elements": []};
+	var defaultData = {
+		"elements": []
+	};
 	fetch(defaultDataUrl).then(response => response.json()).then(data => {
 		// Assuming 'data' is an array of objects
 		defaultData = data; // Assign the fetched data to 'elements' key
@@ -10,6 +12,7 @@
 	}).catch(error => {
 		console.error('Error fetching JSON:', error);
 	});
+
 	function setup() {
 		// Check if the key "setupPerformed" exists
 		if(!localStorage.getItem("setupPerformed")) {
@@ -86,6 +89,8 @@
 			elementPickerContainer.style.overflow = 'auto';
 			elementPickerContainer.style.width = '42%';
 			elementPickerContainer.style.textAlign = 'center'; // Center align all content
+			elementPickerContainer.style.border = '2px solid #CDCDCD'; // Change border color
+			elementPickerContainer.style.borderRadius = '10px'; // Round corners
 			// Hide scrollbar
 			elementPickerContainer.style.msOverflowStyle = 'none'; // IE and Edge
 			elementPickerContainer.style.scrollbarWidth = 'none'; // Firefox
@@ -435,20 +440,30 @@
 			document.body.appendChild(addButtonContainer);
 		}
 		// Create the HTML content
-		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: 50px 50px; width: 50px; height: 50px;"></button>`;
-		// Add event listeners to the buttons
-		document.getElementById('elementPickerButton').addEventListener('click', function() {
-			loadElementsFromUrl(elementsUrl, function(error, elementsData) {
-				if(error) {
-					console.error(error);
-					return;
-				}
-				showElementPicker(elementsData);
-				console.log("Elements Data:", elementsData); // Log elementsData to see its structure
+		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 5px;"></button>`;
+		// Add event listener to the dynamically created button
+		var elementPickerButton = document.getElementById('elementPickerButton');
+		if(elementPickerButton) {
+			elementPickerButton.addEventListener('click', function() {
+				loadElementsFromUrl(elementsUrl, function(error, elementsData) {
+					if(error) {
+						console.error(error);
+						return;
+					}
+					showElementPicker(elementsData);
+					console.log("Elements Data:", elementsData); // Log elementsData to see its structure
+				});
 			});
-		});
-		document.getElementById('resetElementsButton').addEventListener('click', resetData);
-		document.getElementById('creditsButton').addEventListener('click', showCredits);
+		}
+		// Add event listeners to other buttons if they exist
+		var resetElementsButton = document.getElementById('resetElementsButton');
+		if(resetElementsButton) {
+			resetElementsButton.addEventListener('click', resetData);
+		}
+		var creditsButton = document.getElementById('creditsButton');
+		if(creditsButton) {
+			creditsButton.addEventListener('click', showCredits);
+		}
 	}
 
 	function toggleMenu() {
