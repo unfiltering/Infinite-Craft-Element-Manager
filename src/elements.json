@@ -1,77 +1,122 @@
 [
-  {
-    "text": "Water",
-    "emoji": "💧",
-    "discovered": false
-  },
-  {
-    "text": "Fire",
-    "emoji": "🔥",
-    "discovered": false
-  },
-  {
-    "text": "Wind",
-    "emoji": "🌬️",
-    "discovered": false
-  },
-  {
-    "text": "Earth",
-    "emoji": "🌍",
-    "discovered": false
-  },
-  {
-    "text": "Steam",
-    "emoji": "💨",
-    "discovered": false
-  },
-  {
-    "text": "Dust",
-    "emoji": "🌫️",
-    "discovered": false
-  },
-  {
-    "text": "Plant",
-    "emoji": "🌱",
-    "discovered": false
-  },
-  {
-    "text": "Smoke",
-    "emoji": "💨",
-    "discovered": false
-  },
-  {
-    "text": "Planet",
-    "emoji": "🪐",
-    "discovered": false
-  },
-  {
-    "text": "Incense",
-    "emoji": "🕯️",
-    "discovered": false
-  },
-  {
-    "text": "Venus",
-    "emoji": "♀️",
-    "discovered": false
-  },
-  {
-    "text": "Life",
-    "emoji": "🌱",
-    "discovered": false
-  },
-  {
-    "text": "Human",
-    "emoji": "👨",
-    "discovered": false
-  },
-  {
-    "text": "Alien",
-    "emoji": "👽",
-    "discovered": false
-  },
-  {
-    "text": "Hybrid",
-    "emoji": "🌱",
-    "discovered": false
-  }
+ {
+  "text": "Water",
+  "emoji": "💧",
+  "discovered": false
+ },
+ {
+  "text": "Fire",
+  "emoji": "🔥",
+  "discovered": false
+ },
+ {
+  "text": "Wind",
+  "emoji": "🌬️",
+  "discovered": false
+ },
+ {
+  "text": "Earth",
+  "emoji": "🌍",
+  "discovered": false
+ },
+ {
+  "text": "Mountain",
+  "emoji": "🏔️",
+  "discovered": false
+ },
+ {
+  "text": "Mountain Range",
+  "emoji": "🏔️",
+  "discovered": false
+ },
+ {
+  "text": "Steam",
+  "emoji": "💨",
+  "discovered": false
+ },
+ {
+  "text": "Tea",
+  "emoji": "🍵",
+  "discovered": false
+ },
+ {
+  "text": "Kite",
+  "emoji": "🪁",
+  "discovered": false
+ },
+ {
+  "text": "Eagle",
+  "emoji": "🦅",
+  "discovered": false
+ },
+ {
+  "text": "Steam",
+  "emoji": "💨",
+  "discovered": false
+ },
+ {
+  "text": "Dust",
+  "emoji": "🌫️",
+  "discovered": false
+ },
+ {
+  "text": "Plant",
+  "emoji": "🌱",
+  "discovered": false
+ },
+ {
+  "text": "Dandelion",
+  "emoji": "🌼",
+  "discovered": false
+ },
+ {
+  "text": "Weed",
+  "emoji": "🌿",
+  "discovered": false
+ },
+ {
+  "text": "Stoned Eagle",
+  "emoji": "🦅",
+  "discovered": false
+ },
+ {
+  "text": "Smoke",
+  "emoji": "💨",
+  "discovered": false
+ },
+ {
+  "text": "Planet",
+  "emoji": "🪐",
+  "discovered": false
+ },
+ {
+  "text": "Incense",
+  "emoji": "🕯️",
+  "discovered": false
+ },
+ {
+  "text": "Venus",
+  "emoji": "♀️",
+  "discovered": false
+ },
+ {
+  "text": "Life",
+  "emoji": "🌱",
+  "discovered": false
+ },
+ {
+  "text": "Human",
+  "emoji": "👨",
+  "discovered": false
+ },
+ {
+  "text": "Alien",
+  "emoji": "👽",
+  "discovered": false
+ },
+ {
+  "text": "Hybrid",
+  "emoji": "🌱",
+  "discovered": false
+ }
 ]
