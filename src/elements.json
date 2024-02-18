@@ -7,7 +7,12 @@
   {
     "text": "Fire",
     "emoji": "🔥",
-    "discovered": true
+    "discovered": false
+  },
+  {
+    "text": "Wind",
+    "emoji": "🌬️",
+    "discovered": false
   },
   {
     "text": "Earth",
