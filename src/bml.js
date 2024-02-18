@@ -1,7 +1,7 @@
+(function() {
 var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 var defaultData = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/defaultData.json";
 var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
-
 function setup() {
     if (!localStorage.getItem("setupPerformed")) {
         localStorage.setItem('setupPerformed', '0');
@@ -18,7 +18,6 @@ function setup() {
     }
 }
 setup();
-
 function loadElementsFromUrl(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -34,7 +33,6 @@ function loadElementsFromUrl(url, callback) {
     xhr.open("GET", url, true);
     xhr.send();
 }
-
 function giveAllExcept(elementsData) {
     elementsData.forEach(function (categoryData) {
         if (categoryData.category.toLowerCase() === 'custom') {
@@ -47,7 +45,6 @@ function giveAllExcept(elementsData) {
         });
     });
 }
-
 function showElementPicker(elementsData) {
     var existingElementPicker = document.getElementById('elementPickerContainer');
     if (existingElementPicker) {
@@ -195,7 +192,6 @@ function showElementPicker(elementsData) {
         document.body.appendChild(elementPickerContainer);
     }
 }
-
 function loadRandomElementsFromUrl(callback) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -212,7 +208,6 @@ function loadRandomElementsFromUrl(callback) {
     xhr.open("GET", randomElementsUrl, true);
     xhr.send();
 }
-
 function addRandomItem() {
     var storedIndices = localStorage.getItem('selectedIndices');
     var selectedIndices = storedIndices ? JSON.parse(storedIndices) : [];
@@ -244,7 +239,6 @@ function addRandomItem() {
         localStorage.setItem('selectedIndices', JSON.stringify(selectedIndices));
     });
 }
-
 function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
     try {
         var storedData = localStorage.getItem('infinite-craft-data');
@@ -277,7 +271,6 @@ function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
         console.error("Error storing data in localStorage:", error);
     }
 }
-
 function addItem() {
     var itemName = prompt("Please enter the name of the element:");
     var itemEmoji = prompt("Please enter the emoji for the element:");
@@ -285,7 +278,6 @@ function addItem() {
         addItemToLocalStorage(itemName, itemEmoji, false);
     }
 }
-
 function removeItem() {
     var itemName = prompt("Please enter the name of the element you want to remove:");
     if (itemName) {
@@ -316,7 +308,6 @@ function removeItem() {
         }
     }
 }
-
 function resetData() {
     if (confirm("Are you sure you want to reset all elements?")) {
         var defaultData = {
@@ -343,7 +334,6 @@ function resetData() {
         window.location.reload();
     }
 }
-
 function resetAll() {
     if (confirm("Are you sure you want to reset all localstorage?")) {
         localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
@@ -352,11 +342,9 @@ function resetAll() {
         window.location.reload();
     }
 }
-
 function showCredits() {
     window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
 }
-
 function toggleMenu() {
     loadElementsFromUrl(elementsUrl, function (error, elementsData) {
         if (error) {
@@ -366,9 +354,8 @@ function toggleMenu() {
         showElementPicker(elementsData);
     })
 }
-
 document.addEventListener('keydown', function (event) {
     if (event.key === 'q' || event.key === 'Q') {
         toggleMenu();
     }
-});
+});})();
