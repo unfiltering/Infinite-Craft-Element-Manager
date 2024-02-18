@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Neal.Fun Element Manager
+// @name         Infinity Craft Element Manager
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Adds buttons to add and remove items from the list
+// @description  Implements adding/removing elements, and an element picker.
 // @author       You
 // @icon         https://www.google.com/s2/favicons?domain=neal.fun/infinite-craft/&sz=64
 // @match        *://neal.fun/infinite-craft/
