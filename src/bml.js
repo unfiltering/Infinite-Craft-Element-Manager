@@ -1,335 +1,419 @@
 (function() {
-    var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
-    var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
-    function loadElementsFromUrl(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var elementsData = JSON.parse(xhr.responseText);
-                    callback(null, elementsData);
-                } else {
-                    callback("Failed to load elements: " + xhr.status);
-                }
-            }
-        };
-        xhr.open("GET", url, true);
-        xhr.send();
-    }
+	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
+	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
 
-    function showElementPicker(elementsData) {
-        console.log("Elements Data:", elementsData); // Log elementsData to see its structure
+	function setup() {
+		if(!localStorage.getItem("setupPerformed")) {
+			localStorage.setItem('setupPerformed', '0');
+		}
+		if(localStorage.getItem("setupPerformed") === "0") {
+			var defaultData = {
+				"elements": [{
+					"text": "Water",
+					"emoji": "💧",
+					"discovered": false
+				}, {
+					"text": "Fire",
+					"emoji": "🔥",
+					"discovered": false
+				}, {
+					"text": "Wind",
+					"emoji": "🌬️",
+					"discovered": false
+				}, {
+					"text": "Earth",
+					"emoji": "🌍",
+					"discovered": false
+				}]
+			};
+			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+			localStorage.setItem('setupPerformed', '1');
+			localStorage.setItem('elementManagerButtonVisibility', 'visible');
+			localStorage.setItem('custom-data', '{"elements":[]}');
+			alert("Hello!\n It seems it's the first time you're using our script!\nDon't worry, we'll walk you through!");
+			alert("Controls:\nPress Q to open the Element Manager!\n");
+			window.location.reload();
+		}
+	}
+	setup();
 
-        // Create the element picker container
-        var elementPickerContainer = document.createElement('div');
-        elementPickerContainer.style.position = 'fixed';
-        elementPickerContainer.style.top = '50%';
-        elementPickerContainer.style.left = '50%';
-        elementPickerContainer.style.transform = 'translate(-50%, -50%)';
-        elementPickerContainer.style.backgroundColor = 'white';
-        elementPickerContainer.style.padding = '20px';
-        elementPickerContainer.style.border = '2px solid black';
-        elementPickerContainer.style.height = '80%';
-        elementPickerContainer.style.overflow = 'auto';
-        elementPickerContainer.style.width = '42%';
-        elementPickerContainer.style.textAlign = 'center'; // Center align all content
+	function loadElementsFromUrl(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState === XMLHttpRequest.DONE) {
+				if(xhr.status === 200) {
+					var elementsData = JSON.parse(xhr.responseText);
+					callback(null, elementsData);
+				}
+				else {
+					callback("Failed to load elements: " + xhr.status);
+				}
+			}
+		};
+		xhr.open("GET", url, true);
+		xhr.send();
+	}
 
+	function giveAllExcept(elementsData) {
+		elementsData.forEach(function(categoryData) {
+			if(categoryData.category.toLowerCase() === 'custom') {
+				return;
+			}
+			categoryData.elements.forEach(function(element) {
+				if(element.text.toLowerCase() !== 'fire' && element.text.toLowerCase() !== 'wind' && element.text.toLowerCase() !== 'earth' && element.text.toLowerCase() !== 'water') {
+					addItemToLocalStorage(element.text, element.emoji, element.discovered);
+				}
+			});
+		});
+	}
 
-        // Hide scrollbar
-        elementPickerContainer.style.msOverflowStyle = 'none'; // IE and Edge
-        elementPickerContainer.style.scrollbarWidth = 'none'; // Firefox
+	function showElementPicker(elementsData) {
+		var existingElementPicker = document.getElementById('elementPickerContainer');
+		if(existingElementPicker) {
+			document.body.removeChild(existingElementPicker);
+		}
+		else {
+			var elementPickerContainer = document.createElement('div');
+			elementPickerContainer.id = 'elementPickerContainer';
+			elementPickerContainer.style.position = 'fixed';
+			elementPickerContainer.style.top = '50%';
+			elementPickerContainer.style.left = '50%';
+			elementPickerContainer.style.transform = 'translate(-50%, -50%)';
+			elementPickerContainer.style.backgroundColor = 'white';
+			elementPickerContainer.style.padding = '20px';
+			elementPickerContainer.style.border = '2px solid #CDCDCD';
+			elementPickerContainer.style.borderRadius = '18px';
+			elementPickerContainer.style.height = '75%';
+			elementPickerContainer.style.overflow = 'auto';
+			elementPickerContainer.style.width = '42%';
+			elementPickerContainer.style.textAlign = 'center';
+			elementPickerContainer.style.msOverflowStyle = 'none';
+			elementPickerContainer.style.scrollbarWidth = 'none';
+			elementPickerContainer.style.webkitOverflowScrolling = 'touch';
+			var closeButton = document.createElement('img');
+			closeButton.src = 'https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/close.png';
+			closeButton.style.position = 'absolute';
+			closeButton.style.top = '10px';
+			closeButton.style.left = '10px';
+			closeButton.style.cursor = 'pointer';
+			closeButton.style.width = '50px';
+			closeButton.style.height = '50px';
+			closeButton.addEventListener('click', function() {
+				document.body.removeChild(elementPickerContainer);
+			});
+			elementPickerContainer.appendChild(closeButton);
+			if(!Array.isArray(elementsData) || elementsData.length === 0) {
+				console.error("Invalid elements data:", elementsData);
+				return;
+			}
+			var optionsCategory = document.createElement('div');
+			optionsCategory.style.textAlign = 'center';
+			elementPickerContainer.appendChild(optionsCategory);
+			var optionsCategoryTitle = document.createElement('h3');
+			optionsCategoryTitle.textContent = 'Elements Manager';
+			optionsCategoryTitle.style.marginTop = '0';
+			optionsCategoryTitle.style.marginBottom = '10px';
+			optionsCategory.appendChild(optionsCategoryTitle);
+			var optionsList = document.createElement('ul');
+			optionsList.style.listStyleType = 'none';
+			optionsList.style.padding = '0';
+			optionsCategory.appendChild(optionsList);
+			var giveAllButton = document.createElement('li');
+			giveAllButton.textContent = 'Give All';
+			giveAllButton.style.cursor = 'pointer';
+			giveAllButton.style.padding = '10px';
+			giveAllButton.style.borderBottom = '1px solid #ccc';
+			giveAllButton.style.marginBottom = '5px';
+			giveAllButton.style.listStyleType = 'none';
+			giveAllButton.addEventListener('click', function() {
+				giveAllExcept(elementsData);
+				document.body.removeChild(elementPickerContainer);
+			});
+			optionsList.appendChild(giveAllButton);
+			var addElementButton = document.createElement('li');
+			addElementButton.textContent = 'Add Element';
+			addElementButton.style.cursor = 'pointer';
+			addElementButton.style.padding = '10px';
+			addElementButton.style.borderBottom = '1px solid #ccc';
+			addElementButton.style.marginBottom = '5px';
+			addElementButton.style.listStyleType = 'none';
+			addElementButton.addEventListener('click', addItem);
+			optionsList.appendChild(addElementButton);
+			var removeElementButton = document.createElement('li');
+			removeElementButton.textContent = 'Remove Element';
+			removeElementButton.style.cursor = 'pointer';
+			removeElementButton.style.padding = '10px';
+			removeElementButton.style.borderBottom = '1px solid #ccc';
+			removeElementButton.style.marginBottom = '5px';
+			removeElementButton.style.listStyleType = 'none';
+			removeElementButton.addEventListener('click', removeItem);
+			optionsList.appendChild(removeElementButton);
+			var addRandomElementButton = document.createElement('li');
+			addRandomElementButton.textContent = 'Random Element';
+			addRandomElementButton.style.cursor = 'pointer';
+			addRandomElementButton.style.padding = '10px';
+			addRandomElementButton.style.borderBottom = '1px solid #ccc';
+			addRandomElementButton.style.marginBottom = '5px';
+			addRandomElementButton.style.listStyleType = 'none';
+			addRandomElementButton.addEventListener('click', addRandomItem);
+			optionsList.appendChild(addRandomElementButton);
+			var resetElementsButton = document.createElement('li');
+			resetElementsButton.textContent = 'Reset Elements';
+			resetElementsButton.style.cursor = 'pointer';
+			resetElementsButton.style.padding = '10px';
+			resetElementsButton.style.borderBottom = '1px solid #ccc';
+			resetElementsButton.style.marginBottom = '5px';
+			resetElementsButton.style.listStyleType = 'none';
+			resetElementsButton.addEventListener('click', resetData);
+			optionsList.appendChild(resetElementsButton);
+			var resetAllButton = document.createElement('li');
+			resetAllButton.textContent = 'Reset All';
+			resetAllButton.style.cursor = 'pointer';
+			resetAllButton.style.padding = '10px';
+			resetAllButton.style.borderBottom = '1px solid #ccc';
+			resetAllButton.style.marginBottom = '5px';
+			resetAllButton.style.listStyleType = 'none';
+			resetAllButton.addEventListener('click', resetAll);
+			optionsList.appendChild(resetAllButton);
+			var creditsButton = document.createElement('li');
+			creditsButton.textContent = 'Credits';
+			creditsButton.style.cursor = 'pointer';
+			creditsButton.style.padding = '10px';
+			creditsButton.style.borderBottom = '1px solid #ccc';
+			creditsButton.style.marginBottom = '5px';
+			creditsButton.style.listStyleType = 'none';
+			creditsButton.addEventListener('click', showCredits);
+			optionsList.appendChild(creditsButton);
+			elementsData.forEach(function(categoryData) {
+				var categorySection = document.createElement('div');
+				categorySection.style.textAlign = 'center';
+				elementPickerContainer.appendChild(categorySection);
+				var categoryTitle = document.createElement('h3');
+				categoryTitle.textContent = categoryData.category;
+				categoryTitle.style.marginTop = '20px';
+				categoryTitle.style.textAlign = 'center';
+				categoryTitle.style.lineHeight = '1.5';
+				categorySection.appendChild(categoryTitle);
+				var itemList = document.createElement('ul');
+				itemList.style.listStyleType = 'none';
+				itemList.style.padding = '0';
+				categorySection.appendChild(itemList);
+				categoryData.elements.forEach(function(element) {
+					var listItem = document.createElement('li');
+					listItem.textContent = element.emoji + ' ' + element.text;
+					listItem.style.cursor = 'pointer';
+					listItem.style.padding = '10px';
+					listItem.style.borderBottom = '1px solid #ccc';
+					listItem.style.marginBottom = '5px';
+					listItem.addEventListener('click', function() {
+						addItemToLocalStorage(element.text, element.emoji, element.discovered);
+						document.body.removeChild(elementPickerContainer);
+					});
+					itemList.appendChild(listItem);
+				});
+			});
+			document.body.appendChild(elementPickerContainer);
+		}
+	}
 
-        // WebKit (Chrome, Safari, etc.)
-        elementPickerContainer.style.webkitOverflowScrolling = 'touch'; // Momentum scrolling
+	function loadRandomElementsFromUrl(callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState === XMLHttpRequest.DONE) {
+				if(xhr.status === 200) {
+					var randomElementsData = JSON.parse(xhr.responseText);
+					console.log("Loaded all data! Ignore:\n" + randomElementsData);
+					callback(null, randomElementsData);
+				}
+				else {
+					callback("Failed to load random elements: " + xhr.status);
+				}
+			}
+		};
+		xhr.open("GET", randomElementsUrl, true);
+		xhr.send();
+	}
 
-        // Create and append the close button
-        var closeButton = document.createElement('img');
-        closeButton.src = 'https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/close.png';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '10px';
-        closeButton.style.left = '10px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.width = '50px';
-        closeButton.style.height = '50px';
-        closeButton.addEventListener('click', function() {
-            document.body.removeChild(elementPickerContainer);
-        });
-        elementPickerContainer.appendChild(closeButton);
+	function addRandomItem() {
+		var storedIndices = localStorage.getItem('selectedIndices');
+		var selectedIndices = storedIndices ? JSON.parse(storedIndices) : [];
+		loadRandomElementsFromUrl(function(error, randomElementsData) {
+			if(error) {
+				console.error(error);
+				return;
+			}
+			if(selectedIndices.length >= randomElementsData.length) {
+				console.log("Resetting selection.");
+				localStorage.removeItem('selectedIndices');
+				selectedIndices = [];
+			}
+			var filteredIndices = randomElementsData.reduce(function(acc, _, index) {
+				if(!selectedIndices.includes(index)) {
+					acc.push(index);
+				}
+				return acc;
+			}, []);
+			if(filteredIndices.length === 0) {
+				console.log("All items have been selected.");
+				return;
+			}
+			var randomIndex = Math.floor(Math.random() * filteredIndices.length);
+			var selectedIndex = filteredIndices[randomIndex];
+			var randomElement = randomElementsData[selectedIndex];
+			addItemToLocalStorage(randomElement.text, randomElement.emoji, randomElement.discovered);
+			selectedIndices.push(selectedIndex);
+			localStorage.setItem('selectedIndices', JSON.stringify(selectedIndices));
+		});
+	}
 
-        // Check if elementsData is valid
-        if (!Array.isArray(elementsData) || elementsData.length === 0) {
-            console.error("Invalid elements data:", elementsData);
-            return;
-        }
+	function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
+		try {
+			var storedData = localStorage.getItem('infinite-craft-data');
+			var data = storedData ? JSON.parse(storedData) : {
+				"elements": []
+			};
+			var customStoredData = localStorage.getItem('custom-data');
+			var customData = customStoredData ? JSON.parse(customStoredData) : {
+				"elements": []
+			};
+		}
+		catch (error) {
+			console.error("Error parsing JSON data from localStorage:", error);
+			return;
+		}
+		data.elements.push({
+			"text": itemName,
+			"emoji": itemEmoji,
+			"discovered": isDiscovered
+		});
+		customData.elements.push({
+			"text": itemName,
+			"emoji": itemEmoji,
+			"discovered": isDiscovered
+		});
+		window.location.reload();
+		try {
+			localStorage.setItem('infinite-craft-data', JSON.stringify(data));
+			localStorage.setItem('custom-data', JSON.stringify(customData));
+		}
+		catch (error) {
+			console.error("Error storing data in localStorage:", error);
+		}
+	}
 
-        // Iterate over each category in elementsData
-        elementsData.forEach(function(categoryData, index) {
-            if (!categoryData || !Array.isArray(categoryData.elements) || categoryData.elements.length === 0) {
-                console.error("Invalid category data:", categoryData);
-                return;
-            }
+	function addItem() {
+		var itemName = prompt("Please enter the name of the element:");
+		var itemEmoji = prompt("Please enter the emoji for the element:");
+		if(itemName && itemEmoji) {
+			addItemToLocalStorage(itemName, itemEmoji, false);
+		}
+	}
 
-            // Create the category title
-            var categoryTitle = document.createElement('h3');
-            categoryTitle.textContent = categoryData.category;
-            categoryTitle.style.marginTop = index === 0 ? '0' : '20px'; // Add margin only for non-first categories
-            categoryTitle.style.textAlign = 'center'; // Center align category titles
-            categoryTitle.style.lineHeight = '1.5'; // Set line height to match menu items
-            elementPickerContainer.appendChild(categoryTitle);
+	function removeItem() {
+		var itemName = prompt("Please enter the name of the element you want to remove:");
+		if(itemName) {
+			try {
+				var storedData = localStorage.getItem('infinite-craft-data');
+				var data = storedData ? JSON.parse(storedData) : {
+					"elements": []
+				};
+				var customStoredData = localStorage.getItem('custom-data');
+				var customData = customStoredData ? JSON.parse(customStoredData) : {
+					"elements": []
+				};
+			}
+			catch (error) {
+				console.error("Error parsing JSON data from localStorage:", error);
+				return;
+			}
+			data.elements = data.elements.filter(function(element) {
+				return element.text.toLowerCase() !== itemName.toLowerCase();
+			});
+			customData.elements = customData.elements.filter(function(element) {
+				return element.text.toLowerCase() !== itemName.toLowerCase();
+			});
+			try {
+				localStorage.setItem('infinite-craft-data', JSON.stringify(data));
+				localStorage.setItem('custom-data', JSON.stringify(customData));
+			}
+			catch (error) {
+				console.error("Error storing data in localStorage:", error);
+			}
+		}
+	}
 
-            // Create the category list
-            var categoryList = document.createElement('ul');
-            categoryList.style.listStyleType = 'none';
-            categoryList.style.padding = '0'; // Remove default padding
-            elementPickerContainer.appendChild(categoryList);
+	function resetData() {
+		if(confirm("Are you sure you want to reset all elements?")) {
+			var defaultData = {
+				"elements": [{
+					"text": "Water",
+					"emoji": "💧",
+					"discovered": false
+				}, {
+					"text": "Fire",
+					"emoji": "🔥",
+					"discovered": false
+				}, {
+					"text": "Wind",
+					"emoji": "🌬️",
+					"discovered": false
+				}, {
+					"text": "Earth",
+					"emoji": "🌍",
+					"discovered": false
+				}]
+			};
+			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+			alert("Data Reset!");
+			window.location.reload();
+		}
+	}
 
-            // Iterate over each element in the category
-            categoryData.elements.forEach(function(element) {
-                // Create the list item for each element
-                var listItem = document.createElement('li');
-                listItem.textContent = element.emoji + ' ' + element.text;
-                listItem.style.cursor = 'pointer';
-                listItem.style.padding = '10px';
-                listItem.style.borderBottom = '1px solid #ccc';
-                listItem.style.marginBottom = '5px'; // Add margin between items
-                listItem.addEventListener('click', function() {
-                    addItemToLocalStorage(element.text, element.emoji, element.discovered);
-                    document.body.removeChild(elementPickerContainer);
-                });
-                categoryList.appendChild(listItem);
-            });
-        });
+	function resetAll() {
+		if(confirm("Are you sure you want to reset all localstorage?")) {
+			var defaultData = {
+				"elements": [{
+					"text": "Water",
+					"emoji": "💧",
+					"discovered": false
+				}, {
+					"text": "Fire",
+					"emoji": "🔥",
+					"discovered": false
+				}, {
+					"text": "Wind",
+					"emoji": "🌬️",
+					"discovered": false
+				}, {
+					"text": "Earth",
+					"emoji": "🌍",
+					"discovered": false
+				}]
+			};
+			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+			localStorage.setItem('setupPerformed', '0');
+			localStorage.setItem('custom-data', '{"elements":[]}');
+			window.location.reload();
+		}
+	}
 
-        // Append the element picker container to the body
-        document.body.appendChild(elementPickerContainer);
-    }
+	function showCredits() {
+		window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
+	}
 
-    function loadRandomElementsFromUrl(callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var randomElementsData = JSON.parse(xhr.responseText);
-                    console.log("Loaded all data! Ignore:\n" + randomElementsData);
-                    callback(null, randomElementsData);
-                } else {
-                    callback("Failed to load random elements: " + xhr.status);
-                }
-            }
-        };
-        xhr.open("GET", randomElementsUrl, true);
-        xhr.send();
-    }
-
-
-    function addRandomItem() {
-        var storedIndices = localStorage.getItem('selectedIndices');
-        var selectedIndices = storedIndices ? JSON.parse(storedIndices) : [];
-
-        loadRandomElementsFromUrl(function(error, randomElementsData) {
-            if (error) {
-                console.error(error);
-                return;
-            }
-
-            // Reset selection if all items have been chosen
-            if (selectedIndices.length >= randomElementsData.length) {
-                console.log("Resetting selection.");
-                localStorage.removeItem('selectedIndices');
-                selectedIndices = [];
-            }
-
-            // Filter out the indices that have already been selected
-            var filteredIndices = randomElementsData.reduce(function(acc, _, index) {
-                if (!selectedIndices.includes(index)) {
-                    acc.push(index);
-                }
-                return acc;
-            }, []);
-
-            if (filteredIndices.length === 0) {
-                console.log("All items have been selected.");
-                return;
-            }
-
-            var randomIndex = Math.floor(Math.random() * filteredIndices.length);
-            var selectedIndex = filteredIndices[randomIndex];
-            var randomElement = randomElementsData[selectedIndex];
-            addItemToLocalStorage(randomElement.text, randomElement.emoji, randomElement.discovered);
-
-            // Store the index of the selected item
-            selectedIndices.push(selectedIndex);
-            localStorage.setItem('selectedIndices', JSON.stringify(selectedIndices));
-        });
-    }
-
-    function addItemToLocalStorage(itemName, itemEmoji, isDiscovered) {
-        try {
-            var storedData = localStorage.getItem('infinite-craft-data');
-            var data = storedData ? JSON.parse(storedData) : {
-                "elements": []
-            };
-        } catch (error) {
-            console.error("Error parsing JSON data from localStorage:", error);
-            return;
-        }
-
-        data.elements.push({
-            "text": itemName,
-            "emoji": itemEmoji,
-            "discovered": isDiscovered
-        });
-
-        localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-        window.location.reload();
-        console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
-    }
-
-    function addItem() {
-        var itemName = prompt("What's the name of the element?");
-        if (itemName === null) {
-            return; // Cancelled, do nothing
-        }
-        var itemEmoji = prompt("What's the emoji for " + itemName + "?");
-        if (itemEmoji === null) {
-            return; // Cancelled, do nothing
-        }
-
-        function capitalizeName(name) {
-            var exceptions = ["or", "the", "and", "of", "as"];
-            var words = name.toLowerCase().split(' ');
-            for (var i = 0; i < words.length; i++) {
-                if (i === 0 || !exceptions.includes(words[i])) {
-                    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-                }
-            }
-            return words.join(' ');
-        }
-        itemName = capitalizeName(itemName);
-        try {
-            var storedData = localStorage.getItem('infinite-craft-data');
-            var data = storedData ? JSON.parse(storedData) : {
-                "elements": []
-            };
-        } catch (error) {
-            console.error("Error parsing JSON data from localStorage:", error);
-            return;
-        }
-        var existingItemIndex = data.elements.findIndex(function(element) {
-            return element.text.toLowerCase() === itemName.toLowerCase();
-        });
-        var isDiscovered = false;
-        if (existingItemIndex === -1) {
-            var discoveryConfirmation = confirm("Is '" + itemEmoji + " " + itemName + "' a first discovery? (cancel for no)");
-            if (discoveryConfirmation) {
-                isDiscovered = true;
-            }
-        } else {
-            isDiscovered = data.elements[existingItemIndex].discovered;
-        }
-        addItemToLocalStorage(itemName, itemEmoji, isDiscovered);
-    }
-
-    function removeItem() {
-        var itemNameToRemove = prompt("What's the name of the element you want to remove?");
-        if (itemNameToRemove === null) {
-            return; // Cancelled, do nothing
-        }
-        itemNameToRemove = itemNameToRemove.toLowerCase();
-        try {
-            var storedData = localStorage.getItem('infinite-craft-data');
-            var data = storedData ? JSON.parse(storedData) : {
-                "elements": []
-            };
-        } catch (error) {
-            console.error("Error parsing JSON data from localStorage:", error);
-            return;
-        }
-        var indexToRemove = data.elements.findIndex(function(element) {
-            return element.text.toLowerCase() === itemNameToRemove;
-        });
-        if (indexToRemove !== -1) {
-            data.elements.splice(indexToRemove, 1);
-            localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-            window.location.reload();
-            console.log('Removed item ' + itemNameToRemove + '.');
-        } else {
-            console.log('Item ' + itemNameToRemove + ' not found.');
-        }
-    }
-
-    function resetData() {
-        if (confirm("Are you sure you want to reset to the default elements?")) {
-            var defaultData = {
-                "elements": [{
-                        "text": "Water",
-                        "emoji": "💧",
-                        "discovered": false
-                    },
-                    {
-                        "text": "Fire",
-                        "emoji": "🔥",
-                        "discovered": false
-                    },
-                    {
-                        "text": "Wind",
-                        "emoji": "🌬️",
-                        "discovered": false
-                    },
-                    {
-                        "text": "Earth",
-                        "emoji": "🌍",
-                        "discovered": false
-                    }
-                ]
-            };
-            localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-            window.location.reload();
-            console.log("Data reset!")
-        }
-    }
-
-    function showCredits() {
-        window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
-    }
-
-    function addButton() {
-        var addButtonContainer = document.querySelector('.add-item-button-container');
-        if (!addButtonContainer) {
-            addButtonContainer = document.createElement('div');
-            addButtonContainer.className = 'add-item-button-container';
-            addButtonContainer.style.position = 'fixed';
-            addButtonContainer.style.bottom = '10px';
-            addButtonContainer.style.left = '10px';
-            document.body.appendChild(addButtonContainer);
-        }
-
-        // Create the HTML content
-        addButtonContainer.innerHTML =
-            `<button id="addElementButton" style="margin-right: 5px;">Add Element</button>
-        <button id="removeElementButton" style="margin-right: 5px;">Remove Element</button>
-        <button id="addRandomElementButton" style="margin-right: 5px;">Random Element</button>
-        <button id="elementPickerButton" style="margin-right: 5px;">Element Picker</button>
-        <button id="resetElementsButton" style="margin-right: 5px;">Reset Elements</button>
-        <button id="creditsButton">Credits</button>`;
-
-        // Add event listeners to the buttons
-        document.getElementById('addElementButton').addEventListener('click', addItem);
-        document.getElementById('removeElementButton').addEventListener('click', removeItem);
-        document.getElementById('addRandomElementButton').addEventListener('click', addRandomItem);
-        document.getElementById('elementPickerButton').addEventListener('click', function() {
-            loadElementsFromUrl(elementsUrl, function(error, elementsData) {
-                if (error) {
-                    console.error(error);
-                    return;
-                }
-                showElementPicker(elementsData);
-            });
-        });
-        document.getElementById('resetElementsButton').addEventListener('click', resetData);
-        document.getElementById('creditsButton').addEventListener('click', showCredits);
-    }
-
-    addButton();
-    console.warn("[Infinity Craft Element Manager]: Loaded!");
+	function toggleMenu() {
+		loadElementsFromUrl(elementsUrl, function(error, elementsData) {
+			if(error) {
+				console.error(error);
+				return;
+			}
+			showElementPicker(elementsData);
+		})
+	}
+	// Event listener for 'q' key
+	document.addEventListener('keydown', function(event) {
+		if(event.key === 'q' || event.key === 'Q') {
+			toggleMenu();
+		}
+	});
 })();
