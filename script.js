@@ -10,6 +10,109 @@
 // ==/UserScript==
 (function() {
     var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
+    var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
+    function loadElementsFromUrl(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var elementsData = JSON.parse(xhr.responseText);
+                    callback(null, elementsData);
+                } else {
+                    callback("Failed to load elements: " + xhr.status);
+                }
+            }
+        };
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+
+    function showElementPicker(elementsData) {
+        console.log("Elements Data:", elementsData); // Log elementsData to see its structure
+
+        // Create the element picker container
+        var elementPickerContainer = document.createElement('div');
+        elementPickerContainer.style.position = 'fixed';
+        elementPickerContainer.style.top = '50%';
+        elementPickerContainer.style.left = '50%';
+        elementPickerContainer.style.transform = 'translate(-50%, -50%)';
+        elementPickerContainer.style.backgroundColor = 'white';
+        elementPickerContainer.style.padding = '20px';
+        elementPickerContainer.style.border = '2px solid black';
+        elementPickerContainer.style.height = '80%';
+        elementPickerContainer.style.overflow = 'auto';
+        elementPickerContainer.style.width = '42%';
+        elementPickerContainer.style.textAlign = 'center'; // Center align all content
+
+
+        // Hide scrollbar
+        elementPickerContainer.style.msOverflowStyle = 'none'; // IE and Edge
+        elementPickerContainer.style.scrollbarWidth = 'none'; // Firefox
+
+        // WebKit (Chrome, Safari, etc.)
+        elementPickerContainer.style.webkitOverflowScrolling = 'touch'; // Momentum scrolling
+
+        // Create and append the close button
+        var closeButton = document.createElement('img');
+        closeButton.src = 'https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/close.png';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.left = '10px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.width = '50px';
+        closeButton.style.height = '50px';
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(elementPickerContainer);
+        });
+        elementPickerContainer.appendChild(closeButton);
+
+        // Check if elementsData is valid
+        if (!Array.isArray(elementsData) || elementsData.length === 0) {
+            console.error("Invalid elements data:", elementsData);
+            return;
+        }
+
+        // Iterate over each category in elementsData
+        elementsData.forEach(function(categoryData, index) {
+            if (!categoryData || !Array.isArray(categoryData.elements) || categoryData.elements.length === 0) {
+                console.error("Invalid category data:", categoryData);
+                return;
+            }
+
+            // Create the category title
+            var categoryTitle = document.createElement('h3');
+            categoryTitle.textContent = categoryData.category;
+            categoryTitle.style.marginTop = index === 0 ? '0' : '20px'; // Add margin only for non-first categories
+            categoryTitle.style.textAlign = 'center'; // Center align category titles
+            categoryTitle.style.lineHeight = '1.5'; // Set line height to match menu items
+            elementPickerContainer.appendChild(categoryTitle);
+
+            // Create the category list
+            var categoryList = document.createElement('ul');
+            categoryList.style.listStyleType = 'none';
+            categoryList.style.padding = '0'; // Remove default padding
+            elementPickerContainer.appendChild(categoryList);
+
+            // Iterate over each element in the category
+            categoryData.elements.forEach(function(element) {
+                // Create the list item for each element
+                var listItem = document.createElement('li');
+                listItem.textContent = element.emoji + ' ' + element.text;
+                listItem.style.cursor = 'pointer';
+                listItem.style.padding = '10px';
+                listItem.style.borderBottom = '1px solid #ccc';
+                listItem.style.marginBottom = '5px'; // Add margin between items
+                listItem.addEventListener('click', function() {
+                    addItemToLocalStorage(element.text, element.emoji, element.discovered);
+                    document.body.removeChild(elementPickerContainer);
+                });
+                categoryList.appendChild(listItem);
+            });
+        });
+
+        // Append the element picker container to the body
+        document.body.appendChild(elementPickerContainer);
+    }
 
     function loadRandomElementsFromUrl(callback) {
         var xhr = new XMLHttpRequest();
@@ -17,7 +120,7 @@
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var randomElementsData = JSON.parse(xhr.responseText);
-                    console.log("Loaded all data! Ignore:\n" + randomElementsData)
+                    console.log("Loaded all data! Ignore:\n" + randomElementsData);
                     callback(null, randomElementsData);
                 } else {
                     callback("Failed to load random elements: " + xhr.status);
@@ -27,6 +130,7 @@
         xhr.open("GET", randomElementsUrl, true);
         xhr.send();
     }
+
 
     function addRandomItem() {
         var storedIndices = localStorage.getItem('selectedIndices');
@@ -209,32 +313,33 @@
             addButtonContainer.style.left = '10px';
             document.body.appendChild(addButtonContainer);
         }
-        var addButton = document.createElement('button');
-        addButton.textContent = 'Add Element';
-        addButton.style.marginRight = '5px';
-        addButton.addEventListener('click', addItem);
-        addButtonContainer.appendChild(addButton);
-        var removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove Element';
-        removeButton.style.marginRight = '5px';
-        removeButton.addEventListener('click', removeItem);
-        addButtonContainer.appendChild(removeButton);
-        var resetButton = document.createElement('button');
-        resetButton.textContent = 'Reset Elements';
-        resetButton.style.marginRight = '5px';
-        resetButton.addEventListener('click', resetData);
-        addButtonContainer.appendChild(resetButton);
-        var addRandomButton = document.createElement('button');
-        addRandomButton.textContent = 'Random Element';
-        addRandomButton.style.marginRight = '5px';
-        addRandomButton.addEventListener('click', addRandomItem);
-        addButtonContainer.appendChild(addRandomButton);
-        var creditsButton = document.createElement('button');
-        creditsButton.textContent = 'Credits';
-        creditsButton.style.marginRight = '5px';
-        creditsButton.addEventListener('click', showCredits);
-        addButtonContainer.appendChild(creditsButton);
+
+        // Create the HTML content
+        addButtonContainer.innerHTML =
+            `<button id="addElementButton" style="margin-right: 5px;">Add Element</button>
+        <button id="removeElementButton" style="margin-right: 5px;">Remove Element</button>
+        <button id="addRandomElementButton" style="margin-right: 5px;">Random Element</button>
+        <button id="elementPickerButton" style="margin-right: 5px;">Element Picker</button>
+        <button id="resetElementsButton" style="margin-right: 5px;">Reset Elements</button>
+        <button id="creditsButton">Credits</button>`;
+
+        // Add event listeners to the buttons
+        document.getElementById('addElementButton').addEventListener('click', addItem);
+        document.getElementById('removeElementButton').addEventListener('click', removeItem);
+        document.getElementById('addRandomElementButton').addEventListener('click', addRandomItem);
+        document.getElementById('elementPickerButton').addEventListener('click', function() {
+            loadElementsFromUrl(elementsUrl, function(error, elementsData) {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
+                showElementPicker(elementsData);
+            });
+        });
+        document.getElementById('resetElementsButton').addEventListener('click', resetData);
+        document.getElementById('creditsButton').addEventListener('click', showCredits);
     }
+
     addButton();
-    console.log("[Neal.fun Element Manager]: Loaded!");
+    console.warn("[Infinity Craft Element Manager]: Loaded!");
 })();
