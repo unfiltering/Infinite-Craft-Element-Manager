@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Infinity Craft Element Manager
+// @name         Infinite Craft Element Manager
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Implements adding/removing elements, and an element picker.
@@ -341,5 +341,5 @@
     }
 
     addButton();
-    console.warn("[Infinity Craft Element Manager]: Loaded!");
+    console.warn("[Infinite Craft Element Manager]: Loaded!");
 })();
