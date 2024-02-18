@@ -405,7 +405,7 @@
 			addButtonContainer.style.left = '10px';
 			document.body.appendChild(addButtonContainer);
 		}
-		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-top: 10px; margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 10px;"></button>`;
+		addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-top: 10px; margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 6px;"></button>`;
 		var elementPickerButton = document.getElementById('elementPickerButton');
 		if(elementPickerButton) {
 			elementPickerButton.addEventListener('click', function() {
