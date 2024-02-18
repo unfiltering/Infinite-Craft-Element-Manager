@@ -53,6 +53,11 @@
         "discovered": false
       },
       {
+        "text": "Train",
+        "emoji": "🚂",
+        "discovered": false
+      },
+      {
         "text": "Tea",
         "emoji": "🍵",
         "discovered": false
@@ -98,6 +103,16 @@
         "discovered": false
       },
       {
+        "text": "Swamp",
+        "emoji": "🐊",
+        "discovered": false
+      },
+      {
+        "text": "Marsh",
+        "emoji": "🌿",
+        "discovered": false
+      },
+      {
         "text": "Palm Tree",
         "emoji": "🌴",
         "discovered": false
@@ -140,6 +155,21 @@
       {
         "text": "Planet",
         "emoji": "🪐",
+        "discovered": false
+      },
+      {
+        "text": "Solar System",
+        "emoji": "🌌",
+        "discovered": false
+      },
+      {
+        "text": "Universe",
+        "emoji": "🌌",
+        "discovered": false
+      },
+      {
+        "text": "Multiverse",
+        "emoji": "🌌",
         "discovered": false
       },
       {
