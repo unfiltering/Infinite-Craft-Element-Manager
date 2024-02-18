@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Infinite Craft Element Manager AutoUpdate
+// @name         Infinite Craft Element Manager
 // @namespace    http://tampermonkey.net/
 // @version      2
-// @description  Implements adding/removing elements, and an element picker.
-// @author       You
+// @description  Implements adding/removing elements, and an element picker. Will update automatically!
+// @author       unfiltering
 // @icon         https://www.google.com/s2/favicons?domain=neal.fun/infinite-craft/&sz=64
 // @match        *://neal.fun/infinite-craft/
 // @grant        none
