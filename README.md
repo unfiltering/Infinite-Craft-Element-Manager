@@ -1,7 +1,7 @@
 # Infinite Craft Element Manager
 ![Banner](/src/ElementManagerIC.png)
 
-Manage elements for Infinite Craft at Neal.fun! This userscript allows you to add, remove, and reset elements in the game. Some things can actually be merged together considering AI is doing it!
+Manage elements for Infinite Craft at Neal.fun! This userscript allows you to add, remove, and reset elements in the game. Some things can actually be merged together considering AI is doing it.
 
 ## Features
 
