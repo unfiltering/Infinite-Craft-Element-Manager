@@ -133,16 +133,6 @@
         "discovered": false
       },
       {
-        "text": "Coke",
-        "emoji": "🥤",
-        "discovered": false
-      },
-      {
-        "text": "Pepsi",
-        "emoji": "🥤",
-        "discovered": false
-      },
-      {
         "text": "Mud",
         "emoji": "💩",
         "discovered": false
@@ -284,6 +274,16 @@
       },
       {
         "text": "Soda",
+        "emoji": "🥤",
+        "discovered": false
+      },      
+      {
+        "text": "Coke",
+        "emoji": "🥤",
+        "discovered": false
+      },
+      {
+        "text": "Pepsi",
         "emoji": "🥤",
         "discovered": false
       },
@@ -549,6 +549,11 @@
     "elements": [
       {
         "text": "Item",
+        "emoji": "❓",
+        "discovered": true
+      },
+      {
+        "text": "item",
         "emoji": "❓",
         "discovered": true
       },
