@@ -2,30 +2,29 @@
 	var randomElementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/randomElements.json";
 	var elementsUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/elements.json";
 	var defaultDataUrl = "https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/defaultData.json";
-	fetch(defaultDataUrl).then(response => response.json()).then(data => {
-		defaultData = data;
-		console.log('Default Data:', defaultData);
-	}).catch(error => {
-		console.error('Error fetching JSON:', error);
-	});
-function setup() {
-    if (!localStorage.getItem("setupPerformed")) {
-        localStorage.setItem('setupPerformed', '0');
-        window.location.reload();
-    }
-    else {
-        if (localStorage.getItem("setupPerformed") === "0") {
-            localStorage.setItem('setupPerformed', '1');
-            localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-            localStorage.setItem('custom-data', JSON.stringify({
-                "elements": []
-            }));
-            alert("Thanks for using Elements Manager v2!");
-            alert("Press Q to quickly open the menu!");
-        }
-    }
-}
 
+	function setup() {
+		if(!localStorage.getItem("setupPerformed")) {
+			localStorage.setItem('setupPerformed', '0');
+			window.location.reload();
+		}
+		else {
+			if(localStorage.getItem("setupPerformed") === "0") {
+				localStorage.setItem('setupPerformed', '1');
+				fetch(defaultDataUrl).then(response => response.json()).then(data => {
+					var defaultData = data;
+					localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+				}).catch(error => {
+					console.error('Error fetching default data.', error);
+				});
+				localStorage.setItem('custom-data', JSON.stringify({
+					"elements": []
+				}));
+				alert("Thanks for using Elements Manager v2!");
+				alert("Press Q to quickly open the menu, press E to hide the button in the bottom left corner!");
+			}
+		}
+	}
 	setup();
 
 	function loadElementsFromUrl(url, callback) {
@@ -102,9 +101,20 @@ function setup() {
 			optionsCategory.style.textAlign = 'center';
 			elementPickerContainer.appendChild(optionsCategory);
 			var optionsCategoryTitle = document.createElement('h3');
-			optionsCategoryTitle.textContent = '⭐ Elements Manager v2 ⭐';
-			optionsCategoryTitle.style.marginTop = '0';
-			optionsCategoryTitle.style.marginBottom = '10px';
+			var titleText = '🌟 Infinite Craft Element Manager 🌟';
+			var titleParts = titleText.split(' ');
+			optionsCategoryTitle.innerHTML = titleParts.map(part => `<span>${part}</span>`).join(' ');
+			// Style the title
+			optionsCategoryTitle.style.fontFamily = 'Roboto, Arial, sans-serif';
+			optionsCategoryTitle.style.fontWeight = '500'; // Medium
+			optionsCategoryTitle.style.fontSize = '24px';
+			// Apply text shadow only to emojis
+			var emojiSpans = optionsCategoryTitle.querySelectorAll('span');
+			emojiSpans.forEach(span => {
+				if(span.textContent.trim().startsWith('🌟') || span.textContent.trim().startsWith('🔮')) {
+					span.style.textShadow = '2px 2px 4px rgba(255, 255, 0, 0.5)'; // Yellow text shadow for emojis
+				}
+			});
 			optionsCategory.appendChild(optionsCategoryTitle);
 			var optionsList = document.createElement('ul');
 			optionsList.style.listStyleType = 'none';
@@ -383,7 +393,12 @@ function setup() {
 
 	function resetData() {
 		if(confirm("Are you sure you want to reset to the default elements?")) {
-			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+			fetch(defaultDataUrl).then(response => response.json()).then(data => {
+				var defaultData = data;
+				localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+			}).catch(error => {
+				console.error('Error fetching default data.', error);
+			});
 			localStorage.setItem('custom-data', JSON.stringify({
 				"elements": []
 			}));
@@ -427,6 +442,7 @@ function setup() {
 		if(creditsButton) {
 			creditsButton.addEventListener('click', showCredits);
 		}
+		setInitialButtonVisibility();
 	}
 
 	function toggleMenu() {
@@ -438,14 +454,40 @@ function setup() {
 			showElementPicker(elementsData);
 		})
 	}
+
+	function toggleButtonVisibility() {
+		var addButtonContainer = document.querySelector('.add-item-button-container');
+		if(addButtonContainer.style.opacity === '1' || addButtonContainer.style.opacity === '') {
+			localStorage.setItem('buttonVisibility', 'hidden');
+			addButtonContainer.style.transition = 'opacity 0.5s ease';
+			addButtonContainer.style.opacity = '0';
+		}
+		else {
+			localStorage.setItem('buttonVisibility', 'visible');
+			addButtonContainer.style.transition = 'opacity 0.5s ease';
+			addButtonContainer.style.opacity = '1';
+		}
+	}
+
+	function setInitialButtonVisibility() {
+		var buttonVisibility = localStorage.getItem('buttonVisibility');
+		if(!buttonVisibility) {
+			// If buttonVisibility key doesn't exist, create it with default value 'visible'
+			localStorage.setItem('buttonVisibility', 'visible');
+		}
+		else if(buttonVisibility === 'hidden') {
+			// If buttonVisibility is 'invisible', make the button container invisible
+			var addButtonContainer = document.querySelector('.add-item-button-container');
+			addButtonContainer.style.opacity = '0';
+		}
+	}
 	document.addEventListener('keydown', function(event) {
 		if(event.key === 'q' || event.key === 'Q') {
 			toggleMenu();
 		}
+		if(event.key === 'e' || event.key === 'E') {
+			toggleButtonVisibility();
+		}
 	});
 	addButton();
-	loadElementsFromUrl(elementsUrl, function(error, elementsData) {
-		console.log("Elements Data:", elementsData);
-	});
-	console.log('Infinite Craft Element Manager script loaded successfully.');
 })();
