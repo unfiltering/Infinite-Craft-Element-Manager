@@ -43,6 +43,16 @@
         "discovered": false
       },
       {
+        "text": "Sand",
+        "emoji": "🏖️",
+        "discovered": false
+      },
+      {
+        "text": "Glass",
+        "emoji": "🥃",
+        "discovered": false
+      },
+      {
         "text": "Volcano",
         "emoji": "🌋",
         "discovered": false
@@ -95,6 +105,21 @@
       {
         "text": "Steam",
         "emoji": "💨",
+        "discovered": false
+      },
+      {
+        "text": "Mirror",
+        "emoji": "🪞",
+        "discovered": false
+      },
+      {
+        "text": "Coke",
+        "emoji": "🥤",
+        "discovered": false
+      },
+      {
+        "text": "Pepsi",
+        "emoji": "🥤",
         "discovered": false
       },
       {
@@ -245,6 +270,16 @@
       {
         "text": "Alcohol",
         "emoji": "🍷",
+        "discovered": false
+      },
+      {
+        "text": "Vinegar",
+        "emoji": "🍅",
+        "discovered": false
+      },
+      {
+        "text": "Soda",
+        "emoji": "🥤",
         "discovered": false
       },
       {
