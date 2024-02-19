@@ -21,7 +21,7 @@
 					"elements": []
 				}));
 				alert("Considering this is the first time you're using the Elements Manager, we'll walk you through the basics.");
-				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
+				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!\nPress E to hide the menu button in the bottom right corner for trolling.");
 				alert("This message wont appear again, have fun!");
 			}
 		}
