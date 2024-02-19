@@ -383,17 +383,17 @@
       }
    }
 
-   function resetData() {
-      if (confirm("Are you sure you want to reset to the default elements?")) {
-         fetch(defaultDataUrl).then(response => response.json()).then(data => {
-            var defaultData = data;
-            localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-         }).catch(error => {
-            console.error('Error fetching default data.', error);
-         });
-         window.location.reload();
-      }
-   }
+	function resetData() {
+		if(confirm("Are you sure you want to reset to the default elements?")) {
+			fetch(defaultDataUrl).then(response => response.json()).then(data => {
+				var defaultData = data;
+				localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+				window.location.reload();
+			}).catch(error => {
+				console.error('Error fetching default data.', error);
+			});
+		}
+	}
 
    function showCredits() {
       window.open("https://github.com/unfiltering/Infinite-Craft-Element-Manager/");
