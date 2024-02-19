@@ -323,7 +323,6 @@
 			"emoji": itemEmoji,
 			"discovered": isDiscovered
 		});
-		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 		localStorage.setItem('infinite-craft-data', JSON.stringify(data));
 		window.location.reload();
 	}
@@ -350,7 +349,6 @@
 		if(indexToRemove !== -1) {
 			data.elements.splice(indexToRemove, 1);
 			localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-			console.log('Removed element ' + itemNameToRemove + '.');
 			window.location.reload();
 		}
 		else {
@@ -367,7 +365,6 @@
 				console.error('Error fetching default data.', error);
 			});
 			window.location.reload();
-			console.log("Data reset!")
 		}
 	}
 
