@@ -20,8 +20,9 @@
 				localStorage.setItem('custom-data', JSON.stringify({
 					"elements": []
 				}));
-				alert("Thanks for using Elements Manager v2!");
-				alert("Controls: \nPress Q to quickly open the menu\nPress E to hide the button in the bottom left corner");
+				alert("Considering this is the first time you're using the Elements Manager, we'll walk you through the basics.");
+				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
+				alert("This message wont appear again, have fun!");
 			}
 		}
 	}
