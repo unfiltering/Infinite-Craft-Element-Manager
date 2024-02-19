@@ -333,5 +333,135 @@
     "text": "Everything",
     "emoji": "⚛️",
     "discovered": true
+  },
+  {
+    "text": "Superman",
+    "emoji": "🦸",
+    "discovered": false
+  },
+  {
+    "text": "Superdate",
+    "emoji": "💑",
+    "discovered": false
+  },
+  {
+    "text": "Torture",
+    "emoji": "🔪",
+    "discovered": false
+  },
+  {
+    "text": "Scandal",
+    "emoji": "💥",
+    "discovered": false
+  },
+  {
+    "text": "Bro-Scandal",
+    "emoji": "🍆",
+    "discovered": false
+  },
+  {
+    "text": "Bro-verse",
+    "emoji": "👬",
+    "discovered": false
+  },
+  {
+    "text": "Broseidon",
+    "emoji": "🌊",
+    "discovered": false
+  },
+  {
+    "text": "Dionysus",
+    "emoji": "🍷",
+    "discovered": false
+  },
+  {
+    "text": "Brope",
+    "emoji": "🤙",
+    "discovered": false
+  },
+  {
+    "text": "Brother",
+    "emoji": "👬",
+    "discovered": false
+  },
+  {
+    "text": "Superbro",
+    "emoji": "🦸‍♂️",
+    "discovered": false
+  },
+  {
+    "text": "Dirt",
+    "emoji": "💩",
+    "discovered": false
+  },
+  {
+    "text": "Broccoli",
+    "emoji": "🥦",
+    "discovered": false
+  },
+  {
+    "text": "Brodate",
+    "emoji": "💪🏼👨",
+    "discovered": false
+  },
+  {
+    "text": "Unicorn",
+    "emoji": "🦄",
+    "discovered": false
+  },
+  {
+    "text": "Superpope",
+    "emoji": "💩",
+    "discovered": false
+  },
+  {
+    "text": "Superbrother",
+    "emoji": "👨‍👦‍",
+    "discovered": false
+  },
+  {
+    "text": "Superbroseidon",
+    "emoji": "🐋",
+    "discovered": false
+  },
+  {
+    "text": "Vatican",
+    "emoji": "🕍",
+    "discovered": false
+  },
+  {
+    "text": "Gorilla",
+    "emoji": "🦍",
+    "discovered": false
+  },
+  {
+    "text": "King Kong",
+    "emoji": "🦍",
+    "discovered": false
+  },
+  {
+    "text": "King Spongebob",
+    "emoji": "👑",
+    "discovered": false
+  },
+  {
+    "text": "King Neptune",
+    "emoji": "🌊",
+    "discovered": false
+  },
+  {
+    "text": "Rainbow Fish",
+    "emoji": "🐠",
+    "discovered": false
+  },
+  {
+    "text": "Rainbow Train",
+    "emoji": "🌈",
+    "discovered": false
+  },
+  {
+    "text": "Rainbow King",
+    "emoji": "🌈",
+    "discovered": false
   }
 ]
