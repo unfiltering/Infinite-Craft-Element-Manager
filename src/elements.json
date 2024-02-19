@@ -1,6 +1,6 @@
 [
   {
-    "category": "Natural",
+    "category": "Elements",
     "elements": [
       {
         "text": "Water",
@@ -343,16 +343,6 @@
     "category": "Custom",
     "elements": [
       {
-        "text": "is the answer to life, the universe and everything.",
-        "emoji": "4️⃣2️⃣",
-        "discovered": false
-      },
-      {
-        "text": "Fried Chicken",
-        "emoji": "🍗",
-        "discovered": false
-      },
-      {
         "text": "Item",
         "emoji": "❓",
         "discovered": false
@@ -362,26 +352,6 @@
         "emoji": "🦠",
         "discovered": false
       },
-      {
-        "text": "Super",
-        "emoji": "⭐",
-        "discovered": false
-      },
-      {
-        "text": "Stoned Ape",
-        "emoji": "🌫️🦍",
-        "discovered": true
-      },
-      {
-        "text": "Stoned Monkey",
-        "emoji": "🌫️🐒",
-        "discovered": true
-      },
-      {
-        "text": "Banana",
-        "emoji": "🍌",
-        "discovered": false
-      }
     ]
   }
 ]
