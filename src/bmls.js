@@ -205,6 +205,13 @@
 					itemList.appendChild(listItem);
 				});
 			});
+			var footer = document.createElement('footer');
+			footer.textContent = "the elements are sourced from a dynamic JSON feed, subject to continuous updates.";
+			footer.style.marginTop = '5px';
+           		footer.style.color = 'grey';
+           		footer.style.fontStyle = 'italic';
+            		footer.style.fontSize = '10px';
+			elementPickerContainer.appendChild(footer);
 			document.body.appendChild(elementPickerContainer);
 		}
 	}
