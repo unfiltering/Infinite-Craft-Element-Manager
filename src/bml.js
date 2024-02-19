@@ -204,7 +204,7 @@
 				});
 			});
 			var footer = document.createElement('footer');
-			footer.textContent = "the elements are sourced from a dynamic JSON feed, subject to continuous updates.";
+			footer.textContent = "all elements are sourced from a dynamic JSON feed, subject to continuous updates.";
 			footer.style.marginTop = '5px';
            		footer.style.color = 'grey';
            		footer.style.fontStyle = 'italic';
