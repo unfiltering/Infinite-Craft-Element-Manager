@@ -23,6 +23,11 @@
         "discovered": false
       },
       {
+        "text": "Lake",
+        "emoji": "🌊",
+        "discovered": false
+      },
+      {
         "text": "Wave",
         "emoji": "🌊",
         "discovered": false
@@ -30,6 +35,36 @@
       {
         "text": "Tsunami",
         "emoji": "🌊",
+        "discovered": false
+      },
+      {
+        "text": "Volcano",
+        "emoji": "🌋",
+        "discovered": false
+      },
+      {
+        "text": "Island",
+        "emoji": "🏝️",
+        "discovered": false
+      },
+      {
+        "text": "Hawaii",
+        "emoji": "🌺",
+        "discovered": false
+      },  
+      {
+        "text": "Continent",
+        "emoji": "🌎",
+        "discovered": false
+      },
+      {
+        "text": "America",
+        "emoji": "🇺🇸",
+        "discovered": false
+      },
+      {
+        "text": "Obama",
+        "emoji": "🐻",
         "discovered": false
       },
       {
@@ -90,6 +125,11 @@
       {
         "text": "Dust",
         "emoji": "🌫️",
+        "discovered": false
+      },
+      {
+        "text": "Ash",
+        "emoji": "🌋",
         "discovered": false
       },
       {
@@ -164,6 +204,16 @@
       },
       {
         "text": "Weed",
+        "emoji": "🌿",
+        "discovered": false
+      },
+      {
+        "text": "Joint",
+        "emoji": "🍃",
+        "discovered": false
+      },
+      {
+        "text": "Bong",
         "emoji": "🌿",
         "discovered": false
       },
@@ -245,36 +295,6 @@
       {
         "text": "Hybrid",
         "emoji": "🌱",
-        "discovered": false
-      }
-    ]
-  },
-  {
-    "category": "People",
-    "elements": [
-      {
-        "text": "Osama Bin Laden",
-        "emoji": "💣",
-        "discovered": false
-      },
-      {
-        "text": "Obama",
-        "emoji": "🐻",
-        "discovered": false
-      },
-      {
-        "text": "Obama Bin Laden",
-        "emoji": "💩",
-        "discovered": false
-      },
-      {
-        "text": "Trump",
-        "emoji": "💩",
-        "discovered": false
-      },
-      {
-        "text": "Young Sheldon",
-        "emoji": "🤓",
         "discovered": false
       }
     ]
