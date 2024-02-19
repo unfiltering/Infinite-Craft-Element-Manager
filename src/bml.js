@@ -12,6 +12,7 @@
 	function setup() {
 		if(!localStorage.getItem("setupPerformed")) {
 			localStorage.setItem('setupPerformed', '0');
+			window.location.reload();
 		}
 		if(localStorage.getItem("setupPerformed") === "0") {
 			localStorage.setItem('setupPerformed', '1');
@@ -21,7 +22,6 @@
 			}));
 			alert("Thanks for using Elements Manager v2!")
 			alert("Press Q to quickly open the menu!")
-			window.location.reload();
 		}
 	}
 	setup();
