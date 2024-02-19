@@ -83,7 +83,7 @@
          var emojiSpans = title.querySelectorAll('span');
          emojiSpans.forEach(span => {
             if (span.textContent.trim().startsWith('⚛️') || span.textContent.trim().startsWith('🌟')) {
-               span.style.textShadow = '2px 2px 4px rgba(128, 0, 128, 0.5)'; // Yellow text shadow for emojis
+               span.style.textShadow = '2px 2px 4px rgba(146, 102, 204, 0.5)';
             }
          });
          header.appendChild(title);
@@ -409,7 +409,7 @@
          addButtonContainer.style.left = '10px';
          document.body.appendChild(addButtonContainer);
       }
-      addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-top: 10px; margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #CDCDCD; border-radius: 6px;"></button>`;
+      addButtonContainer.innerHTML = `<button id="elementPickerButton" style="margin-top: 10px; margin-right: 5px; background-image: url('https://raw.githubusercontent.com/unfiltering/Infinite-Craft-Element-Manager/main/src/open.png'); background-size: cover; width: 50px; height: 50px; border: 1px solid #9266CC; border-radius: 6px;"></button>`;
       var elementPickerButton = document.getElementById('elementPickerButton');
       if (elementPickerButton) {
          elementPickerButton.addEventListener('click', function () {
