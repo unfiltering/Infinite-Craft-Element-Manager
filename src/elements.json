@@ -280,6 +280,46 @@
     ]
   },
   {
+    "category": "People",
+    "elements": [
+      {
+        "text": "Osama Bin Laden",
+        "emoji": "💣",
+        "discovered": false
+      },
+      {
+        "text": "Obama",
+        "emoji": "🐻",
+        "discovered": false
+      },
+      {
+        "text": "Obama Bin Laden",
+        "emoji": "💩",
+        "discovered": false
+      },
+      {
+        "text": "Trump",
+        "emoji": "💩",
+        "discovered": false
+      },
+      {
+        "text": "Young Sheldon",
+        "emoji": "🤓",
+        "discovered": false
+      }
+    ]
+  },
+  {
+    "category": "Places",
+    "elements": [
+      {
+        "text":"America",
+        "emoji":"🇺🇸",
+        "discovered":false
+      }
+    ]
+  },
+  {
     "category": "Custom",
     "elements": [
       {
