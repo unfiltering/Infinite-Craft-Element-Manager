@@ -17,9 +17,6 @@
 				}).catch(error => {
 					console.error('Error fetching default data.', error);
 				});
-				localStorage.setItem('custom-data', JSON.stringify({
-					"elements": []
-				}));
 				alert("Considering this is the first time you're using the Elements Manager, we'll walk you through the basics.");
 				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!\nPress E to hide the menu button in the bottom right corner for trolling.");
 				alert("This message wont appear again, have fun!");
@@ -288,10 +285,6 @@
 			var data = storedData ? JSON.parse(storedData) : {
 				"elements": []
 			};
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
-				"elements": []
-			};
 		}
 		catch (error) {
 			console.error("Error parsing JSON data from localStorage:", error);
@@ -319,35 +312,19 @@
 			var data = storedData ? JSON.parse(storedData) : {
 				"elements": []
 			};
-			console.log('Parsed data:', data);
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
-				"elements": []
-			};
 		}
 		catch (error) {
 			console.error("Error parsing JSON data from localStorage:", error);
 			return;
 		}
 		data.elements = data.elements || [];
-		console.log('Data elements:', data.elements);
-		customData.elements = customData.elements || [];
-		console.log('Custom data elements:', customData.elements);
-		data.elements = data.elements || [];
-		customData.elements = customData.elements || [];
 		data.elements.push({
-			"text": itemName,
-			"emoji": itemEmoji,
-			"discovered": isDiscovered
-		});
-		customData.elements.push({
 			"text": itemName,
 			"emoji": itemEmoji,
 			"discovered": isDiscovered
 		});
 		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 		localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-		localStorage.setItem('custom-data', JSON.stringify(customData));
 		window.location.reload();
 	}
 
@@ -360,10 +337,6 @@
 		try {
 			var storedData = localStorage.getItem('infinite-craft-data');
 			var data = storedData ? JSON.parse(storedData) : {
-				"elements": []
-			};
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
 				"elements": []
 			};
 		}
@@ -383,17 +356,6 @@
 		else {
 			alert('Element ' + itemNameToRemove + ' not found!');
 		}
-		var customIndexToRemove = customData.elements.findIndex(function(element) {
-			return element.text.toLowerCase() === itemNameToRemove;
-		});
-		if(customIndexToRemove !== -1) {
-			customData.elements.splice(customIndexToRemove, 1);
-			localStorage.setItem('custom-data', JSON.stringify(customData));
-			console.log('Removed item ' + itemNameToRemove + ' from custom-data.');
-		}
-		else {
-			console.log('Element ' + itemNameToRemove + ' not found in custom-data.');
-		}
 	}
 
 	function resetData() {
@@ -404,9 +366,6 @@
 			}).catch(error => {
 				console.error('Error fetching default data.', error);
 			});
-			localStorage.setItem('custom-data', JSON.stringify({
-				"elements": []
-			}));
 			window.location.reload();
 			console.log("Data reset!")
 		}
