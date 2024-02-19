@@ -43,6 +43,16 @@
         "discovered": false
       },
       {
+        "text": "Smoke",
+        "emoji": "💨",
+        "discovered": false
+      },
+      {
+        "text": "Fog",
+        "emoji": "🌫️",
+        "discovered": false
+      },
+      {
         "text": "Island",
         "emoji": "🏝️",
         "discovered": false
@@ -198,6 +208,11 @@
         "discovered": false
       },
       {
+        "text": "Inquisition",
+        "emoji": "🔍",
+        "discovered": false
+      },
+      {
         "text": "Gay",
         "emoji": "🏳️‍🌈",
         "discovered": false
@@ -223,13 +238,23 @@
         "discovered": false
       },
       {
-        "text": "Smoke",
-        "emoji": "💨",
+        "text": "Planet",
+        "emoji": "🪐",
         "discovered": false
       },
       {
-        "text": "Planet",
+        "text": "Saturn",
         "emoji": "🪐",
+        "discovered": false
+      },
+      {
+        "text": "Ring",
+        "emoji": "💍",
+        "discovered": false
+      },
+      {
+        "text": "Crown",
+        "emoji": "👑",
         "discovered": false
       },
       {
@@ -250,6 +275,26 @@
       {
         "text": "Incense",
         "emoji": "🕯️",
+        "discovered": false
+      },
+      {
+        "text": "Prayer",
+        "emoji": "🙏",
+        "discovered": false
+      },
+      {
+        "text": "Priest",
+        "emoji": "👼",
+        "discovered": false
+      },
+      {
+        "text": "Pope",
+        "emoji": "🕍",
+        "discovered": false
+      },
+      {
+        "text": "Spanish Inquisition",
+        "emoji": "😈",
         "discovered": false
       },
       {
