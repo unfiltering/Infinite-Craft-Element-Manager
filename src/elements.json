@@ -23,6 +23,21 @@
         "discovered": false
       },
       {
+        "text": "Plant",
+        "emoji": "🌱",
+        "discovered": false
+      },
+      {
+        "text": "Dandelion",
+        "emoji": "🌼",
+        "discovered": false
+      },
+      {
+        "text": "Tea",
+        "emoji": "🍵",
+        "discovered": false
+      },
+      {
         "text": "Lake",
         "emoji": "🌊",
         "discovered": false
@@ -55,6 +70,11 @@
       {
         "text": "Volcano",
         "emoji": "🌋",
+        "discovered": false
+      },
+      {
+        "text": "Steam",
+        "emoji": "💨",
         "discovered": false
       },
       {
@@ -103,11 +123,6 @@
         "discovered": false
       },
       {
-        "text": "Steam",
-        "emoji": "💨",
-        "discovered": false
-      },
-      {
         "text": "Mirror",
         "emoji": "🪞",
         "discovered": false
@@ -145,11 +160,6 @@
       {
         "text": "Train",
         "emoji": "🚂",
-        "discovered": false
-      },
-      {
-        "text": "Tea",
-        "emoji": "🍵",
         "discovered": false
       },
       {
@@ -208,11 +218,6 @@
         "discovered": false
       },
       {
-        "text": "Plant",
-        "emoji": "🌱",
-        "discovered": false
-      },
-      {
         "text": "Seaweed",
         "emoji": "🌊",
         "discovered": false
@@ -255,11 +260,6 @@
       {
         "text": "Ape",
         "emoji": "🦍",
-        "discovered": false
-      },
-      {
-        "text": "Dandelion",
-        "emoji": "🌼",
         "discovered": false
       },
       {
