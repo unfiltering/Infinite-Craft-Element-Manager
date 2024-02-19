@@ -24,7 +24,7 @@
      	 			alert("Considering this is the first time you're using Infinite Craft Sandbox, we'll walk you through the basics.");
      				alert("Since this site is ripped from Neal, you cannot merge, since infinite craft uses an API, which I dont have.");
       				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
-      				alert("This message won't appear again! Have fun!");
+      				alert("This message wont appear again, have fun!");
 			}
 		}
 	}
