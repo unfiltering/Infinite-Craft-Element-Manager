@@ -23,7 +23,7 @@
 				alert("This site was directly ripped from Neal, I do not own this site!\nWelcome to Infinite Craft Sandbox");
      	 			alert("Considering this is the first time you're using Infinite Craft Sandbox, we'll walk you through the basics.");
      				alert("Since this site is ripped from Neal, you cannot merge, since infinite craft uses an API, which I dont have.");
-      				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!");
+      				alert("Press Q to quickly open the Elements Manager, you can create and remove elements, pick an element to give, or give all known elements to yourself!\nPress E to hide the menu button in the bottom right corner for trolling.");
       				alert("This message wont appear again, have fun!");
 			}
 		}
