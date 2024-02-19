@@ -477,11 +477,9 @@
 	function setInitialButtonVisibility() {
 		var buttonVisibility = localStorage.getItem('buttonVisibility');
 		if(!buttonVisibility) {
-			// If buttonVisibility key doesn't exist, create it with default value 'visible'
 			localStorage.setItem('buttonVisibility', 'visible');
 		}
 		else if(buttonVisibility === 'hidden') {
-			// If buttonVisibility is 'invisible', make the button container invisible
 			var addButtonContainer = document.querySelector('.add-item-button-container');
 			addButtonContainer.style.opacity = '0';
 		}
