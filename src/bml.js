@@ -454,4 +454,5 @@
    });
    setup();
    addButton();
+   console.log("[⚛️]: Loaded.")
 })();
