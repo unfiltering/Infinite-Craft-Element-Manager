@@ -17,9 +17,6 @@
 				}).catch(error => {
 					console.error('Error fetching default data.', error);
 				});
-				localStorage.setItem('custom-data', JSON.stringify({
-					"elements": []
-				}));
 				alert("This site was directly ripped from Neal, I do not own this site!\nWelcome to Infinite Craft Sandbox");
      	 			alert("Considering this is the first time you're using Infinite Craft Sandbox, we'll walk you through the basics.");
      				alert("Since this site is ripped from Neal, you cannot merge, since infinite craft uses an API, which I dont have.");
@@ -104,7 +101,7 @@
 			optionsCategory.style.textAlign = 'center';
 			elementPickerContainer.appendChild(optionsCategory);
 			var optionsCategoryTitle = document.createElement('h3');
-			var titleText = '🌟 Infinite Craft Element Manager 🌟';
+			var titleText = '🌟 Infinite Craft Sandbox Menu 🌟';
 			var titleParts = titleText.split(' ');
 			optionsCategoryTitle.innerHTML = titleParts.map(part => `<span>${part}</span>`).join(' ');
 			optionsCategoryTitle.style.fontWeight = '500';
@@ -290,10 +287,6 @@
 			var data = storedData ? JSON.parse(storedData) : {
 				"elements": []
 			};
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
-				"elements": []
-			};
 		}
 		catch (error) {
 			console.error("Error parsing JSON data from localStorage:", error);
@@ -321,35 +314,18 @@
 			var data = storedData ? JSON.parse(storedData) : {
 				"elements": []
 			};
-			console.log('Parsed data:', data);
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
-				"elements": []
-			};
 		}
 		catch (error) {
 			console.error("Error parsing JSON data from localStorage:", error);
 			return;
 		}
 		data.elements = data.elements || [];
-		console.log('Data elements:', data.elements);
-		customData.elements = customData.elements || [];
-		console.log('Custom data elements:', customData.elements);
-		data.elements = data.elements || [];
-		customData.elements = customData.elements || [];
 		data.elements.push({
 			"text": itemName,
 			"emoji": itemEmoji,
 			"discovered": isDiscovered
 		});
-		customData.elements.push({
-			"text": itemName,
-			"emoji": itemEmoji,
-			"discovered": isDiscovered
-		});
-		console.log('Created item ' + itemEmoji + ' ' + itemName + '.');
 		localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-		localStorage.setItem('custom-data', JSON.stringify(customData));
 		window.location.reload();
 	}
 
@@ -364,10 +340,6 @@
 			var data = storedData ? JSON.parse(storedData) : {
 				"elements": []
 			};
-			var customStoredData = localStorage.getItem('custom-data');
-			var customData = customStoredData ? JSON.parse(customStoredData) : {
-				"elements": []
-			};
 		}
 		catch (error) {
 			console.error("Error parsing JSON data from localStorage:", error);
@@ -379,22 +351,10 @@
 		if(indexToRemove !== -1) {
 			data.elements.splice(indexToRemove, 1);
 			localStorage.setItem('infinite-craft-data', JSON.stringify(data));
-			console.log('Removed element ' + itemNameToRemove + '.');
 			window.location.reload();
 		}
 		else {
 			alert('Element ' + itemNameToRemove + ' not found!');
-		}
-		var customIndexToRemove = customData.elements.findIndex(function(element) {
-			return element.text.toLowerCase() === itemNameToRemove;
-		});
-		if(customIndexToRemove !== -1) {
-			customData.elements.splice(customIndexToRemove, 1);
-			localStorage.setItem('custom-data', JSON.stringify(customData));
-			console.log('Removed item ' + itemNameToRemove + ' from custom-data.');
-		}
-		else {
-			console.log('Element ' + itemNameToRemove + ' not found in custom-data.');
 		}
 	}
 
@@ -406,11 +366,7 @@
 			}).catch(error => {
 				console.error('Error fetching default data.', error);
 			});
-			localStorage.setItem('custom-data', JSON.stringify({
-				"elements": []
-			}));
 			window.location.reload();
-			console.log("Data reset!")
 		}
 	}
 
@@ -479,11 +435,9 @@
 	function setInitialButtonVisibility() {
 		var buttonVisibility = localStorage.getItem('buttonVisibility');
 		if(!buttonVisibility) {
-			// If buttonVisibility key doesn't exist, create it with default value 'visible'
 			localStorage.setItem('buttonVisibility', 'visible');
 		}
 		else if(buttonVisibility === 'hidden') {
-			// If buttonVisibility is 'invisible', make the button container invisible
 			var addButtonContainer = document.querySelector('.add-item-button-container');
 			addButtonContainer.style.opacity = '0';
 		}
