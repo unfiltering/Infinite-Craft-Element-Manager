@@ -21,7 +21,7 @@
 					"elements": []
 				}));
 				alert("Thanks for using Elements Manager v2!");
-				alert("Press Q to quickly open the menu, press E to hide the button in the bottom left corner!");
+				alert("Controls: \nPress Q to quickly open the menu\nPress E to hide the button in the bottom left corner");
 			}
 		}
 	}
@@ -455,19 +455,19 @@
 		})
 	}
 
-	function toggleButtonVisibility() {
-		var addButtonContainer = document.querySelector('.add-item-button-container');
-		if(addButtonContainer.style.opacity === '1' || addButtonContainer.style.opacity === '') {
-			localStorage.setItem('buttonVisibility', 'hidden');
-			addButtonContainer.style.transition = 'opacity 0.5s ease';
-			addButtonContainer.style.opacity = '0';
-		}
-		else {
-			localStorage.setItem('buttonVisibility', 'visible');
-			addButtonContainer.style.transition = 'opacity 0.5s ease';
-			addButtonContainer.style.opacity = '1';
-		}
-	}
+function toggleButtonVisibility() {
+    var addButtonContainer = document.querySelector('.add-item-button-container');
+    if (addButtonContainer.style.opacity === '1' || addButtonContainer.style.opacity === '') {
+        localStorage.setItem('buttonVisibility', 'hidden');
+        addButtonContainer.style.transition = 'opacity 0.5s ease';
+        addButtonContainer.style.opacity = '0';
+    } else {
+        localStorage.setItem('buttonVisibility', 'visible');
+        addButtonContainer.style.transition = 'opacity 0.5s ease';
+        addButtonContainer.style.opacity = '1';
+    }
+}
+
 
 	function setInitialButtonVisibility() {
 		var buttonVisibility = localStorage.getItem('buttonVisibility');
