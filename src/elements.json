@@ -340,17 +340,32 @@
     ]
   },
   {
-    "category": "Custom",
+    "category": "Attributes",
     "elements": [
       {
-        "text": "Item",
-        "emoji": "❓",
-        "discovered": false
+        "text":"Super",
+        "emoji":"⭐",
+        "discovered":false
       },
       {
         "text": "Superbad",
         "emoji": "🦠",
         "discovered": false
+      }
+    ]
+  },
+  {
+    "category": "Custom",
+    "elements": [
+      {
+        "text": "Item",
+        "emoji": "❓",
+        "discovered": true
+      },
+      {
+        "text": "Everything",
+        "emoji": "⚛️",
+        "discovered": true
       }
     ]
   }
