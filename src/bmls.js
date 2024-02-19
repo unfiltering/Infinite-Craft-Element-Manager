@@ -75,14 +75,14 @@
          header.style.textAlign = 'center';
          elementPickerContainer.appendChild(header);
          var title = document.createElement('h3');
-         var headerText = '🌟 Infinite Craft Element Manager 🌟';
+         var headerText = '⚛️ Infinite Craft Element Manager ⚛️';
          var titleParts = headerText.split(' ');
          title.innerHTML = titleParts.map(part => `<span>${part}</span>`).join(' ');
          title.style.fontWeight = '500';
          title.style.fontSize = '24px';
          var emojiSpans = title.querySelectorAll('span');
          emojiSpans.forEach(span => {
-            if (span.textContent.trim().startsWith('🌟') || span.textContent.trim().startsWith('🔮')) {
+            if (span.textContent.trim().startsWith('⚛️') || span.textContent.trim().startsWith('🌟')) {
                span.style.textShadow = '2px 2px 4px rgba(255, 255, 0, 0.5)'; // Yellow text shadow for emojis
             }
          });
