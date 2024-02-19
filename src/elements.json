@@ -28,6 +28,11 @@
         "discovered": false
       },
       {
+        "text": "Ocean",
+        "emoji": "🌊",
+        "discovered": false
+      },
+      {
         "text": "Wave",
         "emoji": "🌊",
         "discovered": false
@@ -185,6 +190,16 @@
       {
         "text": "Seaweed",
         "emoji": "🌊",
+        "discovered": false
+      },
+      {
+        "text": "Sponge",
+        "emoji": "🧽",
+        "discovered": false
+      },
+      {
+        "text": "Spongebob",
+        "emoji": "🍍",
         "discovered": false
       },
       {
