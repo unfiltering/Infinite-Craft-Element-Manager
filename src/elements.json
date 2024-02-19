@@ -344,13 +344,28 @@
     "elements": [
       {
         "text":"Super",
-        "emoji":"⭐",
+        "emoji":"🦸",
         "discovered":false
+      },
+      {
+        "text": "Bad",
+        "emoji": "👎",
+        "discovered": false
       },
       {
         "text": "Superbad",
         "emoji": "🦠",
         "discovered": false
+      }
+    ]
+  },
+  {
+    "category": "Misc",
+    "elements": [
+      {
+        "text":"Breaking Bad",
+        "emoji":"💉",
+        "discovered":false
       }
     ]
   },
