@@ -8,22 +8,24 @@
 	}).catch(error => {
 		console.error('Error fetching JSON:', error);
 	});
+function setup() {
+    if (!localStorage.getItem("setupPerformed")) {
+        localStorage.setItem('setupPerformed', '0');
+        window.location.reload();
+    }
+    else {
+        if (localStorage.getItem("setupPerformed") === "0") {
+            localStorage.setItem('setupPerformed', '1');
+            localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
+            localStorage.setItem('custom-data', JSON.stringify({
+                "elements": []
+            }));
+            alert("Thanks for using Elements Manager v2!");
+            alert("Press Q to quickly open the menu!");
+        }
+    }
+}
 
-	function setup() {
-		if(!localStorage.getItem("setupPerformed")) {
-			localStorage.setItem('setupPerformed', '0');
-			window.location.reload();
-		}
-		if(localStorage.getItem("setupPerformed") === "0") {
-			localStorage.setItem('setupPerformed', '1');
-			localStorage.setItem('infinite-craft-data', JSON.stringify(defaultData));
-			localStorage.setItem('custom-data', JSON.stringify({
-				"elements": []
-			}));
-			alert("Thanks for using Elements Manager v2!")
-			alert("Press Q to quickly open the menu!")
-		}
-	}
 	setup();
 
 	function loadElementsFromUrl(url, callback) {
