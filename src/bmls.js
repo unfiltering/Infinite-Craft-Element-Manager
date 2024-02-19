@@ -107,11 +107,8 @@
 			var titleText = '🌟 Infinite Craft Element Manager 🌟';
 			var titleParts = titleText.split(' ');
 			optionsCategoryTitle.innerHTML = titleParts.map(part => `<span>${part}</span>`).join(' ');
-			// Style the title
-			optionsCategoryTitle.style.fontFamily = 'Roboto, Arial, sans-serif';
-			optionsCategoryTitle.style.fontWeight = '500'; // Medium
+			optionsCategoryTitle.style.fontWeight = '500';
 			optionsCategoryTitle.style.fontSize = '24px';
-			// Apply text shadow only to emojis
 			var emojiSpans = optionsCategoryTitle.querySelectorAll('span');
 			emojiSpans.forEach(span => {
 				if(span.textContent.trim().startsWith('🌟') || span.textContent.trim().startsWith('🔮')) {
