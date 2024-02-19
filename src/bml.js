@@ -235,14 +235,6 @@
          addButtonContainer.style.opacity = '0';
       }
    }
-   document.addEventListener('keydown', function (event) {
-      if (event.key === 'q' || event.key === 'Q') {
-         toggleMenu();
-      }
-      if (event.key === 'e' || event.key === 'E') {
-         toggleButtonVisibility();
-      }
-   });
 
    function loadRandomElementsFromUrl(callback) {
       var xhr = new XMLHttpRequest();
@@ -452,6 +444,14 @@
          }
       }
    }
+   document.addEventListener('keydown', function (event) {
+      if (event.key === 'q' || event.key === 'Q') {
+         toggleMenu();
+      }
+      if (event.key === 'e' || event.key === 'E') {
+         toggleButtonVisibility();
+      }
+   });
    setup();
    addButton();
 })();
