@@ -83,6 +83,11 @@
         "discovered": false
       },
       {
+        "text": "Rainbow",
+        "emoji": "🌈",
+        "discovered": false
+      },
+      {
         "text": "Dust",
         "emoji": "🌫️",
         "discovered": false
@@ -135,6 +140,26 @@
       {
         "text": "Dandelion",
         "emoji": "🌼",
+        "discovered": false
+      },
+      {
+        "text": "Wine",
+        "emoji": "🍷",
+        "discovered": false
+      },
+      {
+        "text": "Holy Water",
+        "emoji": "💦",
+        "discovered": false
+      },
+      {
+        "text": "Catholic Church",
+        "emoji": "⛪",
+        "discovered": false
+      },
+      {
+        "text": "Gay",
+        "emoji": "🏳️‍🌈",
         "discovered": false
       },
       {
