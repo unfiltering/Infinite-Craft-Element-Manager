@@ -153,6 +153,16 @@
         "discovered": false
       },
       {
+        "text": "Vacuum",
+        "emoji": "🧹",
+        "discovered": false
+      },
+      {
+        "text": "Clean",
+        "emoji": "🧼",
+        "discovered": false
+      },
+      {
         "text": "Ash",
         "emoji": "🌋",
         "discovered": false
@@ -218,6 +228,16 @@
         "discovered": false
       },
       {
+        "text": "Alcohol",
+        "emoji": "🍷",
+        "discovered": false
+      },
+      {
+        "text": "Sober",
+        "emoji": "🍵",
+        "discovered": false
+      },
+      {
         "text": "Holy Water",
         "emoji": "💦",
         "discovered": false
@@ -250,6 +270,16 @@
       {
         "text": "Bong",
         "emoji": "🌿",
+        "discovered": false
+      },
+      {
+        "text": "Stoner",
+        "emoji": "🍃",
+        "discovered": false
+      },
+      {
+        "text": "Friend",
+        "emoji": "👯",
         "discovered": false
       },
       {
