@@ -1,42 +1,172 @@
 [
   {
-    "text": "Young Sheldon",
-    "emoji": "🤓",
+    "text": "Water",
+    "emoji": "💧",
     "discovered": false
   },
   {
-    "text": "is the answer to life, the universe and everything.",
-    "emoji": "4️⃣2️⃣",
+    "text": "Fire",
+    "emoji": "🔥",
     "discovered": false
   },
   {
-    "text": "Joint",
-    "emoji": "🚬",
+    "text": "Wind",
+    "emoji": "🌬️",
     "discovered": false
   },
   {
-    "text": "Fried Chicken",
-    "emoji": "🍗",
+    "text": "Earth",
+    "emoji": "🌍",
     "discovered": false
   },
   {
-    "text": "Item",
-    "emoji": "❓",
+    "text": "Lake",
+    "emoji": "🌊",
     "discovered": false
   },
   {
-    "text": "Superbad",
-    "emoji": "🦠",
+    "text": "Wave",
+    "emoji": "🌊",
     "discovered": false
   },
   {
-    "text": "Super",
-    "emoji": "⭐",
+    "text": "Tsunami",
+    "emoji": "🌊",
     "discovered": false
   },
   {
-    "text": "Human",
-    "emoji": "👨",
+    "text": "Volcano",
+    "emoji": "🌋",
+    "discovered": false
+  },
+  {
+    "text": "Island",
+    "emoji": "🏝️",
+    "discovered": false
+  },
+  {
+    "text": "Hawaii",
+    "emoji": "🌺",
+    "discovered": false
+  },
+  {
+    "text": "Continent",
+    "emoji": "🌎",
+    "discovered": false
+  },
+  {
+    "text": "America",
+    "emoji": "🇺🇸",
+    "discovered": false
+  },
+  {
+    "text": "Obama",
+    "emoji": "🐻",
+    "discovered": false
+  },
+  {
+    "text": "Mountain",
+    "emoji": "🏔️",
+    "discovered": false
+  },
+  {
+    "text": "Mountain Range",
+    "emoji": "🏔️",
+    "discovered": false
+  },
+  {
+    "text": "Steam",
+    "emoji": "💨",
+    "discovered": false
+  },
+  {
+    "text": "Engine",
+    "emoji": "🚗",
+    "discovered": false
+  },
+  {
+    "text": "Train",
+    "emoji": "🚂",
+    "discovered": false
+  },
+  {
+    "text": "Tea",
+    "emoji": "🍵",
+    "discovered": false
+  },
+  {
+    "text": "Kite",
+    "emoji": "🪁",
+    "discovered": false
+  },
+  {
+    "text": "Eagle",
+    "emoji": "🦅",
+    "discovered": false
+  },
+  {
+    "text": "Cloud",
+    "emoji": "☁️",
+    "discovered": false
+  },
+  {
+    "text": "Rain",
+    "emoji": "🌧️",
+    "discovered": false
+  },
+  {
+    "text": "Rainbow",
+    "emoji": "🌈",
+    "discovered": false
+  },
+  {
+    "text": "Dust",
+    "emoji": "🌫️",
+    "discovered": false
+  },
+  {
+    "text": "Ash",
+    "emoji": "🌋",
+    "discovered": false
+  },
+  {
+    "text": "Tornado",
+    "emoji": "🌪️",
+    "discovered": false
+  },
+  {
+    "text": "Hurricane",
+    "emoji": "🌀",
+    "discovered": false
+  },
+  {
+    "text": "Plant",
+    "emoji": "🌱",
+    "discovered": false
+  },
+  {
+    "text": "Swamp",
+    "emoji": "🐊",
+    "discovered": false
+  },
+  {
+    "text": "Marsh",
+    "emoji": "🌿",
+    "discovered": false
+  },
+  {
+    "text": "Palm Tree",
+    "emoji": "🌴",
+    "discovered": false
+  },
+  {
+    "text": "Coconut",
+    "emoji": "🥥",
+    "discovered": false
+  },
+  {
+    "text": "Monkey",
+    "emoji": "🐒",
     "discovered": false
   },
   {
@@ -45,33 +175,128 @@
     "discovered": false
   },
   {
-    "text": "Stoned Ape",
-    "emoji": "🌫️🦍",
-    "discovered": true
-  },
-  {
-    "text": "Monkey",
-    "emoji": "🐒",
+    "text": "Dandelion",
+    "emoji": "🌼",
     "discovered": false
   },
   {
-    "text": "Stoned Monkey",
-    "emoji": "🌫️🐒",
-    "discovered": true
+    "text": "Wine",
+    "emoji": "🍷",
+    "discovered": false
   },
   {
-    "text": "Banana",
-    "emoji": "🍌",
+    "text": "Holy Water",
+    "emoji": "💦",
+    "discovered": false
+  },
+  {
+    "text": "Catholic Church",
+    "emoji": "⛪",
+    "discovered": false
+  },
+  {
+    "text": "Gay",
+    "emoji": "🏳️‍🌈",
+    "discovered": false
+  },
+  {
+    "text": "Weed",
+    "emoji": "🌿",
+    "discovered": false
+  },
+  {
+    "text": "Joint",
+    "emoji": "🍃",
+    "discovered": false
+  },
+  {
+    "text": "Bong",
+    "emoji": "🌿",
+    "discovered": false
+  },
+  {
+    "text": "Stoned Eagle",
+    "emoji": "🦅",
+    "discovered": false
+  },
+  {
+    "text": "Smoke",
+    "emoji": "💨",
+    "discovered": false
+  },
+  {
+    "text": "Planet",
+    "emoji": "🪐",
+    "discovered": false
+  },
+  {
+    "text": "Solar System",
+    "emoji": "🌌",
+    "discovered": false
+  },
+  {
+    "text": "Universe",
+    "emoji": "🌌",
+    "discovered": false
+  },
+  {
+    "text": "Multiverse",
+    "emoji": "🌌",
+    "discovered": false
+  },
+  {
+    "text": "Incense",
+    "emoji": "🕯️",
+    "discovered": false
+  },
+  {
+    "text": "Sandstorm",
+    "emoji": "🌪️",
+    "discovered": false
+  },
+  {
+    "text": "Genie",
+    "emoji": "🧞‍♂️",
+    "discovered": false
+  },
+  {
+    "text": "Terrorist",
+    "emoji": "💣",
     "discovered": false
   },
   {
     "text": "Osama Bin Laden",
-    "emoji": "🧕🏻",
+    "emoji": "💣",
     "discovered": false
   },
   {
-    "text": "Obama",
-    "emoji": "👨🏾",
+    "text": "Obama Bin Laden",
+    "emoji": "💩",
+    "discovered": false
+  },
+  {
+    "text": "Venus",
+    "emoji": "♀️",
+    "discovered": false
+  },
+  {
+    "text": "Life",
+    "emoji": "🌱",
+    "discovered": false
+  },
+  {
+    "text": "Human",
+    "emoji": "👨",
+    "discovered": false
+  },
+  {
+    "text": "Alien",
+    "emoji": "👽",
+    "discovered": false
+  },
+  {
+    "text": "Hybrid",
+    "emoji": "🌱",
     "discovered": false
   },
   {
@@ -80,13 +305,38 @@
     "discovered": false
   },
   {
+    "text": "Young Sheldon",
+    "emoji": "🤓",
+    "discovered": false
+  },
+  {
+    "text": "Super",
+    "emoji": "🦸",
+    "discovered": false
+  },
+  {
+    "text": "Bad",
+    "emoji": "👎",
+    "discovered": false
+  },
+  {
+    "text": "Superbad",
+    "emoji": "🦠",
+    "discovered": false
+  },
+  {
     "text": "Breaking Bad",
     "emoji": "💉",
     "discovered": false
   },
   {
-    "text": "President",
-    "emoji": "🇵🇷",
-    "discovered": false
+    "text": "Item",
+    "emoji": "❓",
+    "discovered": true
+  },
+  {
+    "text": "Everything",
+    "emoji": "⚛️",
+    "discovered": true
   }
 ]
