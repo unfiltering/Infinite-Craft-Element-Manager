@@ -21,7 +21,7 @@
 
    function giveAllExcept(elementsData) {
       elementsData.forEach(function (categoryData) {
-         if (categoryData.category.toLowerCase() !== 'natural') {
+         if (categoryData.category.toLowerCase() !== 'elements') {
             return;
          }
          categoryData.elements.forEach(function (element) {
