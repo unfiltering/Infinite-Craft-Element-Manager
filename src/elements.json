@@ -601,7 +601,13 @@
         "text":"Breaking Bad",
         "emoji":"💉",
         "discovered":false
+      },
+      {
+        "text":"",
+        "emoji":"💉",
+        "discovered":false
       }
+      
     ]
   },
   {
