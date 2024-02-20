@@ -488,8 +488,23 @@
         "discovered": false
       },
       {
-        "text": "Human",
+        "text": "Adam",
         "emoji": "👨",
+        "discovered": false
+      },
+      {
+        "text": "Eve",
+        "emoji": "🌙",
+        "discovered": false
+      },
+      {
+        "text": "Man",
+        "emoji": "👨",
+        "discovered": false
+      },
+      {
+        "text": "Woman",
+        "emoji": "👩",
         "discovered": false
       },
       {
