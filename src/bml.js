@@ -299,7 +299,7 @@
 		}
 
 		function capitalizeName(name) {
-			var exceptions = ["or", "the", "and", "of", "as", "an", "wordthatisntcapitalised"];
+			var exceptions = ["or", "the", "and", "of", "as", "an", "(", "v", ")", "bringdingdingdingdingdingdingding"];
 			var words = name.toLowerCase().split(' ');
 			for(var i = 0; i < words.length; i++) {
 				if(i === 0 || !exceptions.includes(words[i])) {
